@@ -24,5 +24,8 @@
     <ClInclude Include="controller\MemoryManager.hpp">
       <Filter>Controller</Filter>
     </ClInclude>
+    <ClInclude Include="tools\Singleton.hpp">
+      <Filter>Tools</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

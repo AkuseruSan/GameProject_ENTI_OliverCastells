@@ -119,6 +119,7 @@
   <ItemGroup>
     <ClInclude Include="controller\MemoryManager.hpp" />
     <ClInclude Include="tools\MemoryIO.hpp" />
+    <ClInclude Include="tools\Singleton.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
