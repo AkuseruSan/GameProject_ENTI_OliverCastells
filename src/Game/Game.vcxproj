@@ -114,12 +114,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cell.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="controller\MemoryManager.hpp" />
-    <ClInclude Include="tools\MemoryIO.hpp" />
-    <ClInclude Include="tools\Singleton.hpp" />
+    <ClInclude Include="GameObject.hpp" />
+    <ClInclude Include="Grid.hpp" />
+    <ClInclude Include="MemoryIO.hpp" />
+    <ClInclude Include="MemoryManager.hpp" />
+    <ClInclude Include="Renderer.hpp" />
+    <ClInclude Include="SceneManager.hpp" />
+    <ClInclude Include="Vector.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

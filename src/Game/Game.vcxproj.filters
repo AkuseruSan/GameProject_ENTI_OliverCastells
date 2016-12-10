@@ -16,16 +16,34 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Cell.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tools\MemoryIO.hpp">
+    <ClInclude Include="Renderer.hpp">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryIO.hpp">
       <Filter>Tools</Filter>
     </ClInclude>
-    <ClInclude Include="controller\MemoryManager.hpp">
+    <ClInclude Include="Vector.hpp">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.hpp">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.hpp">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryManager.hpp">
       <Filter>Controller</Filter>
     </ClInclude>
-    <ClInclude Include="tools\Singleton.hpp">
-      <Filter>Tools</Filter>
+    <ClInclude Include="SceneManager.hpp">
+      <Filter>Controller</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
