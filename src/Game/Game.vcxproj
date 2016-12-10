@@ -119,6 +119,7 @@
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameEngine.hpp" />
     <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="Grid.hpp" />
     <ClInclude Include="MemoryIO.hpp" />

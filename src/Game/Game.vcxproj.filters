@@ -45,5 +45,8 @@
     <ClInclude Include="SceneManager.hpp">
       <Filter>Controller</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngine.hpp">
+      <Filter>Controller</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

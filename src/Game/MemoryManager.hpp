@@ -1,15 +1,18 @@
 
+#define MM MemoryManager::GetInstance()
+
 class MemoryManager
 {
-private:
-	MemoryManager()
-	{
-
-	}
 public:
-	~MemoryManager(){}
-	MemoryManager* Instance()
+	static MemoryManager& GetInstance()
 	{
-		return this;
+		static MemoryManager inst;
+		return inst;
 	}
+
+private:
+	MemoryManager() {}
+	MemoryManager(const MemoryManager&);
+	MemoryManager& operator=(const MemoryManager&);
 };
+

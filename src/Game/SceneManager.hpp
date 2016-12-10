@@ -1,15 +1,18 @@
-class Renderer
+
+#define SM SceneManager::GetInstance()
+
+class SceneManager
 {
 public:
-	static Renderer& GetInstance()
+	static SceneManager& GetInstance()
 	{
-		static Renderer inst;
+		static SceneManager inst;
 		return inst;
 	}
 
 private:
-	Renderer() {}
-	Renderer(const Renderer&);
-	Renderer& operator=(const Renderer&);
+	SceneManager() {}
+	SceneManager(const SceneManager&);
+	SceneManager& operator=(const SceneManager&);
 };
 
