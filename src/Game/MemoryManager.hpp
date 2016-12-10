@@ -1,5 +1,5 @@
-//#pragma once
-//#define MM MemoryManager::GetInstance()
+
+#define MM MemoryManager::GetInstance()
 
 class MemoryManager
 {
