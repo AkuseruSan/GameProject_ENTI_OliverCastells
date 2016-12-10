@@ -1,17 +1,9 @@
 
-#define GE GameEngine::GetInstance()
+#define GE GameEngine
 
-class GameEngine
+namespace GameEngine
 {
-public:
-	static GameEngine& GetInstance()
-	{
-		static GameEngine inst;
-		return inst;
-	}
-
-private:
-	GameEngine() {}
-	GameEngine(const GameEngine&);
-	GameEngine& operator=(const GameEngine&);
-};
+#define GRID_WIDTH 10
+#define GRID_HEIGHT 10
+#define VOID_CELL_TEXTURE 
+}

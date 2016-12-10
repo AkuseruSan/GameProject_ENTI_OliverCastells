@@ -1,3 +1,4 @@
+#include "Scene.hpp"
 
 #define SM SceneManager::GetInstance()
 
@@ -11,8 +12,10 @@ public:
 	}
 
 private:
-	SceneManager() {}
+	SceneManager();
 	SceneManager(const SceneManager&);
 	SceneManager& operator=(const SceneManager&);
+
+	Scene s_mainMenu, s_game;
 };
 

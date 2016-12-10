@@ -16,11 +16,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Cell.cpp">
-      <Filter>Tools</Filter>
-    </ClCompile>
     <ClCompile Include="Texture.cpp">
       <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.hpp">
+      <Filter>Model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -36,9 +36,6 @@
     <ClInclude Include="GameObject.hpp">
       <Filter>Model</Filter>
     </ClInclude>
-    <ClInclude Include="Grid.hpp">
-      <Filter>Model</Filter>
-    </ClInclude>
     <ClInclude Include="MemoryManager.hpp">
       <Filter>Controller</Filter>
     </ClInclude>
@@ -47,6 +44,15 @@
     </ClInclude>
     <ClInclude Include="GameEngine.hpp">
       <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.hpp">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerController.hpp">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.hpp">
+      <Filter>Model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

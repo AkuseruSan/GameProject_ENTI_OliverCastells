@@ -114,7 +114,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="Cell.hpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
@@ -124,7 +124,9 @@
     <ClInclude Include="Grid.hpp" />
     <ClInclude Include="MemoryIO.hpp" />
     <ClInclude Include="MemoryManager.hpp" />
+    <ClInclude Include="PlayerController.hpp" />
     <ClInclude Include="Renderer.hpp" />
+    <ClInclude Include="Scene.hpp" />
     <ClInclude Include="SceneManager.hpp" />
     <ClInclude Include="Vector.hpp" />
   </ItemGroup>

@@ -4,6 +4,7 @@
 #include <SDL\SDL_image.h>	// Used for loading and drawing sprites
 #include <SDL\SDL_mixer.h>	// Used for loading and playing audio files
 
+
 int main(int, char*[]) {
 	using namespace std::string_literals; // Enables to use an array of characters with an "s" at the end as an string literal
 	try {
