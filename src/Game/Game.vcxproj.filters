@@ -27,9 +27,6 @@
     <ClInclude Include="Renderer.hpp">
       <Filter>View</Filter>
     </ClInclude>
-    <ClInclude Include="MemoryIO.hpp">
-      <Filter>Tools</Filter>
-    </ClInclude>
     <ClInclude Include="Vector.hpp">
       <Filter>Tools</Filter>
     </ClInclude>

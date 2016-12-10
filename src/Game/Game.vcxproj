@@ -122,7 +122,6 @@
     <ClInclude Include="GameEngine.hpp" />
     <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="Grid.hpp" />
-    <ClInclude Include="MemoryIO.hpp" />
     <ClInclude Include="MemoryManager.hpp" />
     <ClInclude Include="PlayerController.hpp" />
     <ClInclude Include="Renderer.hpp" />

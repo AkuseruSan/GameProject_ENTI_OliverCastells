@@ -2,7 +2,7 @@
 #include "Cell.hpp"
 #include "GameEngine.hpp"
 
-class Grid : GameObject
+class Grid
 {
 public:
 	Grid();
