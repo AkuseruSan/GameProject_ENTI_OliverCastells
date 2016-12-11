@@ -1,4 +1,5 @@
 #include "GameObject.hpp"
+#include "Grid.hpp"
 #include <list>
 
 class Scene : GameObject
@@ -7,7 +8,10 @@ public:
 	Scene(std::list<GameObject> members);
 
 private:
+
 	std::list<GameObject> gameObjects;
+
+	Grid grid;
 
 	void Update();
 	void Draw();

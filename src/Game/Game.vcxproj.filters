@@ -16,11 +16,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Texture.cpp">
-      <Filter>Tools</Filter>
-    </ClCompile>
     <ClCompile Include="Cell.hpp">
       <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.hpp">
+      <Filter>Tools</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +50,9 @@
     </ClInclude>
     <ClInclude Include="Grid.hpp">
       <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.hpp">
+      <Filter>View</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

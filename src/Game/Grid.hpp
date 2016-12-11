@@ -12,8 +12,15 @@ public:
 
 Grid::Grid()
 {
-	for each (Cell* c in cells)
+	Vector worldPos;
+	
+	for (int i = 0; i < GRID_WIDTH; i++)
 	{
-		c = new Cell();
+		for (int j = 0; i < GRID_HEIGHT; j++)
+		{
+			worldPos = { SCREEN_SIZE.x / GRID_WIDTH * i, SCREEN_SIZE.y / GRID_HEIGHT * j };
+			cells[i][j] = new Cell(Vector{ i, j }, worldPos);
+		}
+
 	}
 }

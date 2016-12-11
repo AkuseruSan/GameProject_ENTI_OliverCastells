@@ -116,7 +116,7 @@
   <ItemGroup>
     <ClCompile Include="Cell.hpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Texture.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine.hpp" />
@@ -128,6 +128,7 @@
     <ClInclude Include="Scene.hpp" />
     <ClInclude Include="SceneManager.hpp" />
     <ClInclude Include="Vector.hpp" />
+    <ClInclude Include="Window.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

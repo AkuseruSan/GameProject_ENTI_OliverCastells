@@ -11,6 +11,8 @@ public:
 		return inst;
 	}
 
+	Scene GetCurentScene();
+
 private:
 	SceneManager();
 	SceneManager(const SceneManager&);

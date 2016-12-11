@@ -1,12 +1,13 @@
 #include "SDL\SDL.h"
 #include "Vector.hpp"
+//#include "SceneManager.hpp"
 
 class GameObject
 {
 public:	
 	GameObject();
-	
-	Vector screenPosition, gridPosition;
+
+	Vector position;
 
 	void SetPosition();
 
@@ -16,7 +17,7 @@ public:
 
 void GameObject::SetPosition()
 {
-
+	SM
 }
 
 GameObject::GameObject()

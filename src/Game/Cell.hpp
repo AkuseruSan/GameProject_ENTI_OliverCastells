@@ -1,32 +1,38 @@
 #include <SDL\SDL_image.h>
 #include "GameObject.hpp"
 #include "Vector.hpp"
+#include "Texture.hpp"
 
 enum CellType {VOID, OBSTACLE, POW, PLAYER};
 
-class Cell : GameObject
+class Cell
 {
 public:
-	Cell(CellType t, SDL_Texture& tx, int posX, int posY);
+	Cell(Vector gridPos, Vector worldPos);
 	~Cell();
 	CellType type;
-	SDL_Texture* tex;
-	Vector position;
+	Vector gridPosition, worldPosition;
 
-	void Update();
+	GameObject* assignedObject;
+
 	void Draw();
 };
 
-Cell::Cell(CellType t, SDL_Texture& tx, int posX, int posY)
+Cell::Cell(Vector gridPos, Vector worldPos)
 {
-	type = t;
-	tex = &tx;
+	gridPosition.x = gridPos.x;
+	gridPosition.y = gridPos.y;
 
-	position.x = posX;
-	position.y = posY;
+	worldPosition.x = worldPos.x;
+	worldPosition.y = worldPos.y;
 }
 
 Cell::~Cell()
 {
-	delete(tex);
+	delete(assignedObject);
+}
+
+void Cell::Draw()
+{
+	assignedObject->Update();
 }
