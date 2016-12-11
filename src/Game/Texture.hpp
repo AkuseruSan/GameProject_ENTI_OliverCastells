@@ -33,5 +33,5 @@ void Texture::Render(int x, int y, SDL_Rect* clip = NULL)
 		quad.h = clip->h;
 	}
 
-	//SDL_RenderCopy(R
+	//SDL_RenderCopy(R, 
 }

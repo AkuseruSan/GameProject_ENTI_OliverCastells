@@ -17,7 +17,11 @@ public:
 		SDL_DestroyWindow(myWindow), myWindow = nullptr; //Destroy window
 		SDL_Quit();
 	}
-	inline SDL_Window* operator() (void) { return myWindow; }
+
+	SDL_Window* GetWindow() {
+		return myWindow;
+	}
+	//inline SDL_Window* operator() (void) { return myWindow; }
 
 private:
 	SDL_Window* myWindow{ nullptr };
