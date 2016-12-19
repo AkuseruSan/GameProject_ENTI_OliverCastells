@@ -45,5 +45,7 @@ public:
 
 		//Renderer
 		if (RR == nullptr) throw "Unable to initialize the SDL_Renderer"s;
+
+
 	}
 };
