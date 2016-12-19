@@ -1,12 +1,49 @@
+#pragma once
+#include <string>			// Needed to process error messages
+#include <SDL\SDL.h>		// Always needs to be included for an SDL app
+#include <SDL\SDL_ttf.h>	// Used for loading fonts and rendering text
+#include <SDL\SDL_image.h>	// Used for loading and drawing sprites
+#include <SDL\SDL_mixer.h>	// Used for loading and playing audio files
+
+#include "Window.hpp"
 #include "Vector.hpp"
+#include "View.hpp"
 
-#define GE GameEngine
+#define GE GameEngine::Instance()
 
-namespace GameEngine
+using namespace std::string_literals;
+class GameEngine
 {
-#define SCREEN_SIZE Vector{512, 512}
-#define GRID_WIDTH 10
-#define GRID_HEIGHT 10
-#define CELL_WIDTH 5
-#define CELL_HEIGHT 5
-}
+private:
+	GameEngine() 
+	{
+
+	}
+public:
+	inline static GameEngine &Instance() {
+		static GameEngine ge;
+		return ge;
+	}
+	~GameEngine() 
+	{
+
+	}
+
+	void Init()
+	{
+		SDL_Log("Executable built in %s", SDL_GetBasePath());
+		if (SDL_Init(SDL_INIT_EVERYTHING) != 0) throw "Unable to initialize SDL subsystems"s;
+		const Uint8 imgFlags{ IMG_INIT_PNG | IMG_INIT_JPG };
+		if (!(IMG_Init(imgFlags) & imgFlags)) throw "Unable to initialize SDL_image"s;
+		const Uint8 mixFlags{ MIX_INIT_MP3 | MIX_INIT_OGG };
+		if (!(Mix_Init(mixFlags) & mixFlags)) throw "Unable to initialize SDL_mixer"s;
+		if (TTF_Init() != 0) throw "Unable to initialize SDL_ttf"s;
+
+		
+		//Window
+		if (WW == nullptr) throw "Unable to initialize the SDL_Window"s;
+
+		//Renderer
+		if (RR == nullptr) throw "Unable to initialize the SDL_Renderer"s;
+	}
+};

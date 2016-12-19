@@ -3,16 +3,17 @@
 #include <SDL/SDL_ttf.h>
 #include "Window.hpp"
 
-#define R Renderer::Instance()
+#define R Renderer::Instance()//Game Engine Renderer
+#define RR Renderer::Instance().GetRenderer()//SDL Renderer
 
 class Renderer
 {
 	SDL_Renderer *myRenderer{ nullptr };
 public:
-	static Renderer& Instance()
+	inline static Renderer& Instance()
 	{
-		static Renderer inst;
-		return inst;
+		static Renderer myRenderer;
+		return myRenderer;
 	}
 
 	SDL_Renderer* GetRenderer()
@@ -27,7 +28,7 @@ public:
 
 private:
 	Renderer() {
-		myRenderer = SDL_CreateRenderer(W.GetWindow(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+		myRenderer = SDL_CreateRenderer(WW, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	}
 	Renderer(const Renderer&);
 	Renderer& operator=(const Renderer&);

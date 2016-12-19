@@ -16,21 +16,9 @@ public:
 
 	void Render(int x, int y, SDL_Rect* clip = NULL);
 
-	Vector GetSize();
+	Vector2 GetSize();
 
 private:
-	Vector size;
-	
+	//Vector2 size;
+
 };
-
-void Texture::Render(int x, int y, SDL_Rect* clip = NULL)
-{
-	SDL_Rect quad = { x, y, size.x, size.y };
-
-	if (clip != NULL)
-	{
-		quad.w = clip->w;
-		quad.h = clip->h;
-	}
-
-}

@@ -1,4 +1,6 @@
-struct Vector
+#pragma once
+struct Vector2
 {
-	int x, y;
+	int x;
+	int y;
 };

@@ -7,7 +7,7 @@ class GameObject
 public:	
 	GameObject();
 
-	Vector position;
+	Vector2 position;
 
 	void SetPosition();
 

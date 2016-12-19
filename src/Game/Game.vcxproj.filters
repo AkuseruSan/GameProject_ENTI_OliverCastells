@@ -45,5 +45,11 @@
     <ClInclude Include="DataStructures.hpp">
       <Filter>Tools</Filter>
     </ClInclude>
+    <ClInclude Include="View.hpp">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="System.hpp">
+      <Filter>Controller</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

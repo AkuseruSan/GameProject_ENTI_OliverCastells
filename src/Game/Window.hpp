@@ -1,16 +1,18 @@
 #pragma once
 #include <SDL/SDL.h>
 #include <string>
+#include "System.hpp"
 
 #define W Window::Instance()
+#define WW Window::Instance().GetWindow()
 
 class Window {
-	Window(const std::string &&name, int &&screenWidth, int &&screenHeight) : w_name(name), w_width(screenWidth), w_height(screenHeight) {
-		myWindow = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth, screenHeight, 0);
+	Window(const std::string &&name, int &&screenWidth, int &&screenHeight){
+		myWindow = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth, screenHeight, 4);
 	}
 public:
-	inline static Window &Instance() {
-		static Window window("", 0, 0);
+	inline static Window& Instance() {
+		static Window window("Game Window", SCREEN_WIDTH, SCREEN_HEIGHT);
 		return window;
 	}
 	~Window() {
@@ -25,6 +27,4 @@ public:
 
 private:
 	SDL_Window* myWindow{ nullptr };
-	const int w_width, w_height;
-	const std::string w_name;
 };
