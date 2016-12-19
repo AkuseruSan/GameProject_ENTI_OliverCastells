@@ -1,7 +1,7 @@
 #include <string>
 #include <SDL\SDL_image.h>
-#include "Vector.hpp"
 #include "Renderer.hpp"
+#include "Vector.hpp"
 
 class Texture
 {
@@ -33,5 +33,4 @@ void Texture::Render(int x, int y, SDL_Rect* clip = NULL)
 		quad.h = clip->h;
 	}
 
-	//SDL_RenderCopy(R, 
 }
