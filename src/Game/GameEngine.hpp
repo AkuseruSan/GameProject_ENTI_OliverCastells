@@ -8,6 +8,7 @@
 #include "Window.hpp"
 #include "Vector.hpp"
 #include "View.hpp"
+#include "Renderer.hpp"
 
 #define GE GameEngine::Instance()
 
@@ -45,5 +46,33 @@ public:
 
 		//Renderer
 		if (RR == nullptr) throw "Unable to initialize the SDL_Renderer"s;
+	}
+
+	void GameLoop() {
+		SDL_Event evnt;
+		for (bool isRunning{ true }; isRunning;) {
+			// HANDLE EVENTS
+			while (SDL_PollEvent(&evnt)) {
+				switch (evnt.type) {
+				case SDL_QUIT:			isRunning = false; break;
+				case SDL_MOUSEMOTION:	playerTarget.x = evnt.motion.x - 50; playerTarget.y = evnt.motion.y - 50; break;
+				default:;
+				}
+			}
+			// UPDATE
+			playerRect.x += (playerTarget.x - playerRect.x) / 10;
+			playerRect.y += (playerTarget.y - playerRect.y) / 10;
+			// DRAW
+			SDL_RenderClear(RR);
+			SDL_RenderCopy(RR, bgTexture, nullptr, &bgRect);
+			SDL_RenderCopy(RR, playerTexture, nullptr, &playerRect);
+			SDL_RenderCopy(RR, textTexture, nullptr, &textRect);
+			SDL_RenderPresent(RR);
+		}
+	}
+
+	void Run() {
+		Init();
+		GameLoop();
 	}
 };

@@ -4,7 +4,6 @@
 #include <SDL\SDL_image.h>	// Used for loading and drawing sprites
 #include <SDL\SDL_mixer.h>	// Used for loading and playing audio files
 
-#include "View.hpp"
 #include "GameEngine.hpp"
 
 
@@ -13,7 +12,7 @@ int main(int, char*[]) {
 	try {
 		// --- INIT ---
 
-		GE.Init();
+		GE.Run();
 
 		// --- SPRITES ---
 		SDL_Texture *bgTexture{ IMG_LoadTexture(RR, "../../res/gfx/bg.jpg") };
@@ -44,28 +43,6 @@ int main(int, char*[]) {
 		if (!soundtrack) throw "Unable to load the Mix_Music soundtrack"s;
 		Mix_VolumeMusic(MIX_MAX_VOLUME / 4);
 		Mix_PlayMusic(soundtrack, -1);
-
-		// --- GAME LOOP ---
-		SDL_Event evnt;
-		for (bool isRunning{ true }; isRunning;) {
-			// HANDLE EVENTS
-			while (SDL_PollEvent(&evnt)) {
-				switch (evnt.type) {
-				case SDL_QUIT:			isRunning = false; break;
-				case SDL_MOUSEMOTION:	playerTarget.x = evnt.motion.x - 50; playerTarget.y = evnt.motion.y - 50; break;
-				default:;
-				}
-			}
-			// UPDATE
-			playerRect.x += (playerTarget.x - playerRect.x) / 10;
-			playerRect.y += (playerTarget.y - playerRect.y) / 10;
-			// DRAW
-			SDL_RenderClear(RR);
-			SDL_RenderCopy(RR, bgTexture, nullptr, &bgRect);
-			SDL_RenderCopy(RR, playerTexture, nullptr, &playerRect);
-			SDL_RenderCopy(RR, textTexture, nullptr, &textRect);
-			SDL_RenderPresent(RR);
-		}
 
 		// --- DESTROY ---
 		Mix_CloseAudio();

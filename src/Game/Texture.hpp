@@ -6,7 +6,6 @@
 class Texture
 {
 public:
-	
 	Texture();
 	~Texture();
 
