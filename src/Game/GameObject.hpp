@@ -17,7 +17,7 @@ public:
 
 void GameObject::SetPosition()
 {
-	//SM
+	
 }
 
 GameObject::GameObject()

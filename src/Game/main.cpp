@@ -24,7 +24,7 @@ int main(int, char*[]) {
 		//SDL_Rect rectSrc{ 0, 0, 0, 0 };
 		//SDL_QueryTexture(texturePlayer, nullptr, nullptr, &rectSrc.w, &rectSrc.h);
 		//rectSrc.w >>= 1, rectSrc.h >>= 1;
-
+		
 		// --- TEXT ---
 		TTF_Font *font{ TTF_OpenFont("../../res/fnt/candy.ttf", 50) };
 		if (font == nullptr) throw "Unable to initialize the TTF_Font"s;
