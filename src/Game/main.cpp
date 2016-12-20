@@ -15,12 +15,14 @@ int main(int, char*[]) {
 		GE.Run();
 
 		// --- SPRITES ---
-		SDL_Texture *bgTexture{ IMG_LoadTexture(RR, "../../res/gfx/bg.jpg") };
-		SDL_Texture *playerTexture{ IMG_LoadTexture(RR, "../../res/gfx/blue.png") };
-		if (bgTexture == nullptr || playerTexture == nullptr) throw "Unable to create the SDL textures for the sprites"s;
-		SDL_Rect bgRect{ 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
-		SDL_Rect playerRect{ (SCREEN_WIDTH >> 1) - 50, (SCREEN_HEIGHT >> 1) - 50, 100, 100 };
-		SDL_Rect playerTarget{ 0, 0, 100, 100 };
+
+		//SDL_Texture *bgTexture{ IMG_LoadTexture(RR, "../../res/gfx/bg.jpg") };
+		//SDL_Texture *playerTexture{ IMG_LoadTexture(RR, "../../res/gfx/blue.png") };
+		//if (bgTexture == nullptr || playerTexture == nullptr) throw "Unable to create the SDL textures for the sprites"s;
+		//SDL_Rect bgRect{ 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+		//SDL_Rect playerRect{ (SCREEN_WIDTH >> 1) - 50, (SCREEN_HEIGHT >> 1) - 50, 100, 100 };
+		//SDL_Rect playerTarget{ 0, 0, 100, 100 };
+
 		//SDL_Rect rectSrc{ 0, 0, 0, 0 };
 		//SDL_QueryTexture(texturePlayer, nullptr, nullptr, &rectSrc.w, &rectSrc.h);
 		//rectSrc.w >>= 1, rectSrc.h >>= 1;
@@ -46,9 +48,9 @@ int main(int, char*[]) {
 
 		// --- DESTROY ---
 		Mix_CloseAudio();
-		SDL_DestroyTexture(bgTexture);
-		SDL_DestroyTexture(textTexture);
-		SDL_DestroyTexture(playerTexture);
+		//SDL_DestroyTexture(bgTexture);
+		//SDL_DestroyTexture(textTexture);
+		//SDL_DestroyTexture(playerTexture);
 		SDL_DestroyRenderer(RR);
 		SDL_DestroyWindow(WW);
 	}

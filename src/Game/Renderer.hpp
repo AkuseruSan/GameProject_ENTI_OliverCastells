@@ -21,9 +21,9 @@ public:
 	{
 		return myRenderer;
 	}
-	void Render(SDL_Texture* tex, SDL_Rect* rect)
+	void Render(SDL_Texture* tex, SDL_Rect* sourceRect, SDL_Rect* destRect)
 	{
-		SDL_RenderCopy(myRenderer, tex, nullptr, rect);
+		SDL_RenderCopy(myRenderer, tex, sourceRect, destRect);
 	}
 
 

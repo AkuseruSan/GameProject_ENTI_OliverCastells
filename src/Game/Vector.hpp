@@ -1,5 +1,5 @@
 #pragma once
-struct Vector2
+struct Vector
 {
 	int x;
 	int y;

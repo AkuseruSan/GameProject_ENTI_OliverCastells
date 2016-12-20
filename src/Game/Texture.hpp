@@ -15,7 +15,7 @@ public:
 
 	void Render(int x, int y, SDL_Rect* clip = NULL);
 
-	Vector2 GetSize();
+	Vector GetSize();
 
 private:
 	//Vector2 size;
