@@ -11,6 +11,15 @@
 
 #define GE GameEngine::Instance()
 
+#define ATLAS_TEXTURE Texture{"ATLAS", "../../res/tex/atlas.png"}
+#define BACKGROUND_TEXTURE Texture{"BCKG", "../../res/tex/bckg.png"}
+
+struct Texture
+{
+	std::string name;
+	const char* path;
+};
+
 using namespace std::string_literals;
 class GameEngine
 {
@@ -19,6 +28,7 @@ private:
 	{
 
 	}
+	std::map<std::string, SDL_Texture*> sprites;
 public:
 	inline static GameEngine &Instance() {
 		static GameEngine ge;
@@ -46,6 +56,19 @@ public:
 		//Renderer
 		if (RR == nullptr) throw "Unable to initialize the SDL_Renderer"s;
 
+		//Sprites
+		LoadTexture(ATLAS_TEXTURE.name, ATLAS_TEXTURE.path);
+	}
 
+	void LoadTexture(std::string name, const char* path)
+	{
+		std::pair<std::string, SDL_Texture*> aux{ name, IMG_LoadTexture(RR, path) };
+		sprites.insert(aux);
+	}
+
+	SDL_Texture* GetTexture(std::string key)
+	{
+		if (sprites[key] == nullptr) throw "No texture stored with that key value!";
+		return sprites[key];
 	}
 };

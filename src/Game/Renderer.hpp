@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL/SDL_image.h>
 #include <SDL/SDL_ttf.h>
+#include <map>
 #include "Window.hpp"
 
 #define R Renderer::Instance()//Game Engine Renderer
@@ -24,7 +25,8 @@ public:
 	{
 		SDL_RenderCopy(myRenderer, tex, nullptr, rect);
 	}
-	//SDL_Renderer* operator() (void) { return myRenderer; }
+
+
 
 private:
 	Renderer() {
@@ -32,4 +34,5 @@ private:
 	}
 	Renderer(const Renderer&);
 	Renderer& operator=(const Renderer&);
+
 };
