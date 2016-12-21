@@ -1,7 +1,6 @@
 #include "System.hpp"
-//#include "Vector.hpp"
-//#include "GameObject.hpp"
-#include "GameEngine.hpp"
+#include "GameObject.hpp"
+#include "Renderer.hpp"
 
 class Grid
 {
@@ -19,7 +18,7 @@ public:
 		{
 			for (int j = 0; j < GRID_HEIGHT; j++)
 			{
-				gameObjectsGrid[i][j] = new GameObject(i, j, SCREEN_WIDTH / GRID_WIDTH, SCREEN_HEIGHT / GRID_HEIGHT, GE.GetTexture(ATLAS_TEXTURE.name));
+				gameObjectsGrid[i][j] = new GameObject(i, j, SCREEN_WIDTH / GRID_WIDTH, SCREEN_HEIGHT / GRID_HEIGHT, R.GetTexture(ATLAS_TEXTURE.name));
 			}
 		}
 	}
