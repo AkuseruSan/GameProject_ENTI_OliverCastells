@@ -115,12 +115,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Texture.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DataStructures.hpp" />
     <ClInclude Include="GameEngine.hpp" />
     <ClInclude Include="GameObject.hpp" />
+    <ClInclude Include="InputManager.hpp" />
     <ClInclude Include="Renderer.hpp" />
     <ClInclude Include="Scene.hpp" />
     <ClInclude Include="SceneManager.hpp" />

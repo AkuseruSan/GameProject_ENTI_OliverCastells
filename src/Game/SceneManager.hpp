@@ -1,3 +1,5 @@
+#include "System.hpp"
+#include "GameEngine.hpp"
 #include "Scene.hpp"
 
 #define SM SceneManager::GetInstance()
@@ -11,13 +13,26 @@ public:
 		return inst;
 	}
 
-	Scene GetCurentScene();
+	Scene& GetCurentScene() 
+	{
+		return currentScene;
+	}
+	void InitScenes()
+	{
+		s_mainMenu = new Scene({GameObject(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 10, 10, GE.GetTexture(ATLAS_TEXTURE.name))});
+	}
 
 private:
-	SceneManager();
+	SceneManager()
+	{
+		InitScenes();
+		currentScene = *s_mainMenu;
+	}
+
 	SceneManager(const SceneManager&);
 	SceneManager& operator=(const SceneManager&);
 
-	Scene s_mainMenu, s_game;
+	Scene* s_mainMenu, s_game;
+	Scene& currentScene;
 };
 

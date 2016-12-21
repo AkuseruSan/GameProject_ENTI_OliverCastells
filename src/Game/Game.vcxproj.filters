@@ -16,9 +16,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Texture.hpp">
-      <Filter>Tools</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renderer.hpp">
@@ -42,13 +39,13 @@
     <ClInclude Include="Window.hpp">
       <Filter>View</Filter>
     </ClInclude>
-    <ClInclude Include="DataStructures.hpp">
-      <Filter>Tools</Filter>
-    </ClInclude>
     <ClInclude Include="View.hpp">
       <Filter>View</Filter>
     </ClInclude>
     <ClInclude Include="System.hpp">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.hpp">
       <Filter>Controller</Filter>
     </ClInclude>
   </ItemGroup>

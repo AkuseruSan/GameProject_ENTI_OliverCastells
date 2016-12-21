@@ -1,7 +1,8 @@
 #include "GameObject.hpp"
+#include "Grid.hpp"
 #include <list>
 
-class Scene : GameObject
+class Scene
 {
 public:
 	Scene(std::list<GameObject> members);
@@ -9,7 +10,7 @@ public:
 private:
 
 	std::list<GameObject> gameObjects;
-
+	Grid grid;
 
 	void Update();
 	void Draw();
@@ -20,6 +21,8 @@ private:
 Scene::Scene(std::list<GameObject> members)
 {
 	gameObjects.clear();
+
+	grid = Grid(GRID_WIDTH, GRID_HEIGHT);
 	
 	for each (GameObject obj in members)
 	{
