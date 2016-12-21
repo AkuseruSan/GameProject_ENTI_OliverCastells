@@ -12,7 +12,7 @@
 
 struct Texture
 {
-	std::string name;
+	std::string key;
 	const char* path;
 };
 

@@ -8,7 +8,7 @@ class SceneManager
 public:
 	static SceneManager& GetInstance()
 	{
-		static SceneManager inst;
+		static SceneManager inst = SceneManager();
 		return inst;
 	}
 
@@ -21,9 +21,12 @@ public:
 		s_mainMenu = new Scene(0);
 	}
 
-	void Run()
+	void Update()
 	{
 		GetCurentScene()->Update();
+	}
+	void Draw()
+	{
 		GetCurentScene()->Draw();
 	}
 

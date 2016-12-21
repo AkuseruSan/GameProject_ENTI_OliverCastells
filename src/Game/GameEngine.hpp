@@ -49,10 +49,10 @@ public:
 		if (RR == nullptr) throw "Unable to initialize the SDL_Renderer"s;
 
 		//Sprites
-		R.LoadTexture(ATLAS_TEXTURE.name, ATLAS_TEXTURE.path);
+		R.LoadTexture(ATLAS_TEXTURE.key, ATLAS_TEXTURE.path);
 
 		//Init Scenes
-
+		SM.InitScenes();
 	}
 
 	void GameLoop() {
@@ -62,26 +62,32 @@ public:
 			while (SDL_PollEvent(&evnt)) {
 				switch (evnt.type) {
 				case SDL_QUIT:			isRunning = false; break;
-				case SDL_MOUSEMOTION:	//playerTarget.x = evnt.motion.x - 50; playerTarget.y = evnt.motion.y - 50; break;
+				//case SDL_MOUSEMOTION:	//playerTarget.x = evnt.motion.x - 50; playerTarget.y = evnt.motion.y - 50; break;
 				default:;
 				}
 			}
+
 			// UPDATE
-			SM.Run();
-			
-			//playerRect.x += (playerTarget.x - playerRect.x) / 10;
-			//playerRect.y += (playerTarget.y - playerRect.y) / 10;
-			//// DRAW
-			//SDL_RenderClear(RR);
-			//SDL_RenderCopy(RR, bgTexture, nullptr, &bgRect);
-			//SDL_RenderCopy(RR, playerTexture, nullptr, &playerRect);
-			//SDL_RenderCopy(RR, textTexture, nullptr, &textRect);
-			//SDL_RenderPresent(RR);
+			Update();
+
+			// DRAW
+			Draw();
+
 		}
 	}
 
 	void Run() {
 		Init();
 		GameLoop();
+	}
+	void Draw()
+	{
+		SDL_RenderClear(RR);
+		SM.Draw();
+		SDL_RenderPresent(RR);
+	}
+	void Update()
+	{
+		SM.Update();
 	}
 };

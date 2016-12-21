@@ -19,6 +19,7 @@ private:
 
 	//std::list<GameObject> gameObjects;
 	Grid grid;
+	SDL_Texture* background;
 
 
 };

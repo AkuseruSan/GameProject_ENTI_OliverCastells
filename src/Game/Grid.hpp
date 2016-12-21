@@ -18,7 +18,7 @@ public:
 		{
 			for (int j = 0; j < GRID_HEIGHT; j++)
 			{
-				gameObjectsGrid[i][j] = new GameObject(i, j, SCREEN_WIDTH / GRID_WIDTH, SCREEN_HEIGHT / GRID_HEIGHT, R.GetTexture(ATLAS_TEXTURE.name));
+				gameObjectsGrid[i][j] = new GameObject(i, j, SCREEN_WIDTH / GRID_WIDTH, SCREEN_HEIGHT / GRID_HEIGHT, R.GetTexture(ATLAS_TEXTURE.key));
 			}
 		}
 	}
