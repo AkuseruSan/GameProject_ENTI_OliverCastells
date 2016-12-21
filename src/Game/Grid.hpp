@@ -1,12 +1,13 @@
 #include "System.hpp"
 #include "GameObject.hpp"
 #include "Renderer.hpp"
+#include <list>
 
 class Grid
 {
 private:
 
-	GameObject* gameObjectsGrid[GRID_WIDTH][GRID_HEIGHT];
+	GameObject gameObjectsGrid[GRID_WIDTH][GRID_HEIGHT];
 
 public:
 	Grid() {
@@ -18,7 +19,7 @@ public:
 		{
 			for (int j = 0; j < GRID_HEIGHT; j++)
 			{
-				gameObjectsGrid[i][j] = new GameObject(i, j, SCREEN_WIDTH / GRID_WIDTH, SCREEN_HEIGHT / GRID_HEIGHT, R.GetTexture(ATLAS_TEXTURE.key));
+				gameObjectsGrid[i][j] = GameObject(i, j, SCREEN_WIDTH / GRID_WIDTH, SCREEN_HEIGHT / GRID_HEIGHT, R.GetTexture(ATLAS_TEXTURE.key));
 			}
 		}
 	}
@@ -29,7 +30,7 @@ public:
 		{
 			for (int j = 0; j < GRID_HEIGHT; j++)
 			{
-				gameObjectsGrid[i][j]->Update();
+				gameObjectsGrid[i][j].Update();
 			}
 		}
 	}
@@ -40,13 +41,8 @@ public:
 		{
 			for (int j = 0; j < GRID_HEIGHT; j++)
 			{
-				gameObjectsGrid[i][j]->Draw();
+				gameObjectsGrid[i][j].Draw();
 			}
 		}
-	}
-
-	Vector GetWorldPosition(int xPosIndex, int yPosIndex)
-	{
-		return Vector{ (GRID_WIDTH - xPosIndex)*CELL_WIDTH, (GRID_HEIGHT - yPosIndex)*CELL_HEIGHT };
 	}
 };

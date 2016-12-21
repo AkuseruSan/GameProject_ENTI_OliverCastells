@@ -12,6 +12,7 @@ private:
 	SDL_Texture* texture;
 
 public:	
+	GameObject() = default;
 	GameObject(int, int, int, int, SDL_Texture*);
 
 	void SetPosition(int, int);
@@ -31,6 +32,8 @@ GameObject::GameObject(int posX, int posY, int w, int h, SDL_Texture* tex)
 	SetPosition(posX, posY);
 
 	texture = tex;
+
+	UpdateBounds();
 }
 
 void GameObject::SetPosition(int x, int y)
@@ -46,7 +49,7 @@ Vector GameObject::GetPosition()
 
 void GameObject::Draw()
 {
-	R.RenderTexture(texture, nullptr, SDL_Rect{ 0,0, 50, 50 });
+	R.RenderTexture(texture, nullptr, *bounds);
 }
 
 void GameObject::Update()

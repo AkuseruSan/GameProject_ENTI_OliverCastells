@@ -50,9 +50,6 @@ public:
 
 		//Sprites
 		R.LoadTexture(ATLAS_TEXTURE.key, ATLAS_TEXTURE.path);
-
-		//Init Scenes
-		SM.InitScenes();
 	}
 
 	void GameLoop() {
