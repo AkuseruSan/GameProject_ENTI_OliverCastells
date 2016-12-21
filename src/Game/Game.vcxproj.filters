@@ -30,9 +30,6 @@
     <ClInclude Include="SceneManager.hpp">
       <Filter>Controller</Filter>
     </ClInclude>
-    <ClInclude Include="GameEngine.hpp">
-      <Filter>Controller</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.hpp">
       <Filter>Model</Filter>
     </ClInclude>
@@ -46,6 +43,18 @@
       <Filter>Controller</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.hpp">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.cpp">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.hpp">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine.cpp">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine.hpp">
       <Filter>Controller</Filter>
     </ClInclude>
   </ItemGroup>

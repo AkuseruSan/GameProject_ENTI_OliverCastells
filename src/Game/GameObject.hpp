@@ -1,3 +1,4 @@
+#pragma once
 #include "SDL\SDL.h"
 #include "Vector.hpp"
 //#include "SceneManager.hpp"
@@ -11,7 +12,7 @@ private:
 	SDL_Texture* texture;
 
 public:	
-	GameObject(Grid*, int, int, int, int, SDL_Texture*);
+	GameObject(int, int, int, int, SDL_Texture*);
 
 	void SetPosition(int, int);
 	Vector GetPosition();
@@ -22,7 +23,7 @@ public:
 	void UpdateBounds();
 };
 
-GameObject::GameObject(Grid* g, int posX, int posY, int w, int h, SDL_Texture* tex)
+GameObject::GameObject(int posX, int posY, int w, int h, SDL_Texture* tex)
 {
 	width = w;
 	height = h;

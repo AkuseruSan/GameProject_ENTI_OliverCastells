@@ -1,34 +1,21 @@
 #include "System.hpp"
-#include "Vector.hpp"
+//#include "Vector.hpp"
+//#include "GameObject.hpp"
+#include "GameEngine.hpp"
 
 class Grid
 {
 private:
-	int xSize;
-	int ySize;
+
+	GameObject* gameObjectsGrid[GRID_WIDTH][GRID_HEIGHT];
 
 public:
-	Grid(){}
-	Grid(int xS, int yS)
-	{
-		xSize = xS;
-		ySize = yS;
-	}
+	Grid();
+	Grid(int);
 
-	Vector GetWorldPosition(int xPosIndex, int yPosIndex)
-	{
-		return Vector{ (xSize - xPosIndex)*CELL_WIDTH, (ySize - yPosIndex)*CELL_HEIGHT };
-	}
-};
+	void Update();
 
-class Cell
-{
-private:
-	int posX;
-	int posY;
-public:
-	Cell(Grid* g)
-	{
+	void Draw();
 
-	}
+	Vector GetWorldPosition(int, int);
 };

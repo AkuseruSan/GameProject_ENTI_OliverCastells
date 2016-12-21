@@ -5,43 +5,39 @@
 class Scene
 {
 public:
-	Scene(std::list<GameObject> members);
+	Scene();
+	Scene(int);
 
-private:
-
-	std::list<GameObject> gameObjects;
-	Grid grid;
+	Grid GetGrid()
+	{
+		return grid;
+	}
 
 	void Update();
 	void Draw();
+
+private:
+
+	//std::list<GameObject> gameObjects;
+	Grid grid;
+
+
 };
 
 //Class Definition
 
-Scene::Scene(std::list<GameObject> members)
+Scene::Scene(int a)
 {
-	gameObjects.clear();
-
-	grid = Grid(GRID_WIDTH, GRID_HEIGHT);
+	grid = Grid(a);
 	
-	for each (GameObject obj in members)
-	{
-		gameObjects.push_back(obj);
-	}
 }
 
 void Scene::Update()
 {
-	for each (GameObject obj in gameObjects)
-	{
-		obj.Update();
-	}
+	grid.Update();
 }
 
 void Scene::Draw()
 {
-	for each (GameObject obj in gameObjects)
-	{
-		obj.Draw();
-	}
+	grid.Draw();
 }
