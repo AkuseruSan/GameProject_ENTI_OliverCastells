@@ -29,6 +29,10 @@ public:
 	}
 	inline bool HasQuit(void) const { return m_exit; }
 
+	inline InputValue* getInput() {
+		return m_inputValues.front.pop();
+	}
+
 private:
 	bool m_exit = false;
 	std::queue<InputValue*> m_inputValues;
