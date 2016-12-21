@@ -1,5 +1,5 @@
 #pragma once
-#include "SDL\SDL.h"
+//#include "SDL\SDL.h"
 #include "Vector.hpp"
 //#include "SceneManager.hpp"
 
@@ -46,7 +46,7 @@ Vector GameObject::GetPosition()
 
 void GameObject::Draw()
 {
-
+	R.RenderTexture(texture, nullptr, SDL_Rect{ 0,0, 50, 50 });
 }
 
 void GameObject::Update()

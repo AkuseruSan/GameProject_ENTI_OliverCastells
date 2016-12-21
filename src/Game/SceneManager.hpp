@@ -1,5 +1,4 @@
-#include "System.hpp"
-#include "GameEngine.hpp"
+#pragma once
 #include "Scene.hpp"
 
 #define SM SceneManager::GetInstance()

@@ -45,9 +45,6 @@
     <ClInclude Include="InputManager.hpp">
       <Filter>Controller</Filter>
     </ClInclude>
-    <ClInclude Include="Grid.cpp">
-      <Filter>Model</Filter>
-    </ClInclude>
     <ClInclude Include="Grid.hpp">
       <Filter>Model</Filter>
     </ClInclude>

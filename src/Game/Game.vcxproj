@@ -120,7 +120,6 @@
     <ClInclude Include="GameEngine.cpp" />
     <ClInclude Include="GameEngine.hpp" />
     <ClInclude Include="GameObject.hpp" />
-    <ClInclude Include="Grid.cpp" />
     <ClInclude Include="Grid.hpp" />
     <ClInclude Include="InputManager.hpp" />
     <ClInclude Include="Renderer.hpp" />

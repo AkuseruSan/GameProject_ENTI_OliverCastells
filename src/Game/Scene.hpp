@@ -1,4 +1,3 @@
-#include "GameObject.hpp"
 #include "Grid.hpp"
 #include <list>
 
@@ -25,7 +24,7 @@ private:
 };
 
 //Class Definition
-
+Scene::Scene() = default;
 Scene::Scene(int a)
 {
 	grid = Grid(a);
