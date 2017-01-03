@@ -9,6 +9,7 @@
 #include "View.hpp"
 #include "System.hpp"
 #include "SceneManager.hpp"
+#include "DataManager.hpp"
 
 #define GE GameEngine::Instance()
 
@@ -50,6 +51,9 @@ public:
 
 		//Sprites
 		R.LoadTexture(ATLAS_TEXTURE.key, ATLAS_TEXTURE.path);
+
+		//Load Game Data
+
 	}
 
 	void GameLoop() {
