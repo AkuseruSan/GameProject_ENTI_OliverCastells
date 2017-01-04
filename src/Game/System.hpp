@@ -13,3 +13,8 @@
 #define ATLAS_HEIGHT 2
 
 #define DELTA_TIME 85
+
+#define DIR_UP 1
+#define DIR_RIGHT 2
+#define DIR_DOWN 3
+#define DIR_LEFT 4

@@ -2,12 +2,6 @@
 
 #include <SDL/SDL.h>
 #include <queue>
-#include <iostream>
-
-#define UP SDL_SCANCODE_UP
-#define DOWN SDL_SCANCODE_DOWN
-#define LEFT SDL_SCANCODE_LEFT
-#define RIGHT SDL_SCANCODE_RIGHT
 
 #define IM InputManager::Instance()
 
@@ -15,7 +9,7 @@ class InputManager {
 	InputManager() = default;
 	InputManager(const InputManager &rhs) = delete;
 	InputManager &operator=(const InputManager &rhs) = delete;
-	//enum class InputValue{LEFT = SDL_SCANCODE_LEFT, RIGHT = SDL_SCANCODE_RIGHT, UP = SDL_SCANCODE_UP, DOWN = SDL_SCANCODE_DOWN};
+
 public:
 	~InputManager() = default;
 	inline static InputManager &Instance() {
@@ -24,21 +18,42 @@ public:
 	}
 	void Update(void) {
 		SDL_Event evnt;
-		if (SDL_PollEvent(&evnt) && SDL_PollEvent(&evnt) != (int)m_inputValues.back()) {
-			switch (evnt.type)
-			{
-			case SDL_QUIT:				m_exit = true; break;
-			case SDL_KEYDOWN:			m_inputValues.push.back(evnt); break;
+		while (SDL_PollEvent(&evnt)) {
+			switch (evnt.type) {
+			case SDL_QUIT:
+				m_exit = true;
+				break;
+			case SDL_KEYDOWN:
+				if (evnt.key.keysym.sym == SDLK_UP && direction.back() != DIR_DOWN && direction.back() != DIR_UP)
+				{
+					direction.push(DIR_UP);
+					break;
+				}
+				else if (evnt.key.keysym.sym == SDLK_DOWN && direction.back() != DIR_UP && direction.back() != DIR_DOWN)
+				{
+					direction.push(DIR_DOWN);
+					break;
+				}
+				else if (evnt.key.keysym.sym == SDLK_LEFT && direction.back() != DIR_RIGHT && direction.back() != DIR_LEFT)
+				{
+					direction.push(DIR_LEFT);
+					break;
+				}
+				else if (evnt.key.keysym.sym == SDLK_RIGHT && direction.back() != DIR_LEFT && direction.back() != DIR_RIGHT)
+				{
+					direction.push(DIR_RIGHT);
+					break;
+				}
+			default:
+				break;
 			}
 		}
 	}
 	inline bool HasQuit(void) const { return m_exit; }
-
-	inline int getInput() {
-		return m_inputValues.front.pop();
-	}
+	inline int getDirction(void)  const { if (!direction.empty()) return direction.front(); }
+	inline void deleteDirection(void) { if (!direction.empty()) direction.pop(); }
 
 private:
 	bool m_exit = false;
-	std::queue<int> m_inputValues;
+	std::queue<int> direction;
 };
