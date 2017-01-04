@@ -38,14 +38,22 @@ public:
 		//SDL_RenderCopyEx(myRenderer, tex, sourceRect, &destRect, 0, new SDL_Point{ SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED }, flip);
 	}
 
-	void Render(SDL_Texture* tex, SDL_Rect* sourceRect, SDL_Rect& destRect, int flag)
+	void Render(SDL_Texture* tex, SDL_Rect* sourceRect, SDL_Rect& destRect, int degrees)
 	{
-
+		SDL_RenderCopyEx(myRenderer, tex, sourceRect, &destRect, degrees, nullptr, SDL_FLIP_NONE);
 	}
 
 	void RenderText()
 	{
 
+	}
+
+	SDL_Rect* GetAtlasRegion(Vector position, Vector size)
+	{
+		SDL_Rect* rect;
+		GetTexture(ATLAS_TEXTURE.key);
+		
+		return new SDL_Rect{0,0,0,0};
 	}
 
 	void LoadTexture(std::string name, const char* path)

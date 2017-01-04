@@ -55,7 +55,7 @@ void GameObject::Draw()
 
 void GameObject::Update()
 {
-	SetBounds();
+	//SetBounds();
 }
 
 void GameObject::SetBounds()
