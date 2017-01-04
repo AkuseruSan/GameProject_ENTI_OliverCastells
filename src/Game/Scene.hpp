@@ -1,4 +1,7 @@
+#pragma once
+
 #include "Grid.hpp"
+#include "PlayerController.hpp"
 #include <list>
 
 class Scene
@@ -17,9 +20,9 @@ public:
 
 private:
 
-	//std::list<GameObject> gameObjects;
 	Grid grid;
 	SDL_Texture* background;
+	PlayerController* pc;
 
 
 };
@@ -29,11 +32,12 @@ Scene::Scene() = default;
 Scene::Scene(int a)
 {
 	grid = Grid(a);
-	
+	pc = new PlayerController();
 }
 
 void Scene::Update()
 {
+	pc->Update();
 	grid.Update();
 }
 

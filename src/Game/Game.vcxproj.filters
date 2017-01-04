@@ -54,5 +54,8 @@
     <ClInclude Include="Vector.hpp">
       <Filter>Tools</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerController.hpp">
+      <Filter>Model</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

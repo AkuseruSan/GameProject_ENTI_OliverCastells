@@ -122,6 +122,7 @@
     <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="Grid.hpp" />
     <ClInclude Include="InputManager.hpp" />
+    <ClInclude Include="PlayerController.hpp" />
     <ClInclude Include="Renderer.hpp" />
     <ClInclude Include="Scene.hpp" />
     <ClInclude Include="SceneManager.hpp" />

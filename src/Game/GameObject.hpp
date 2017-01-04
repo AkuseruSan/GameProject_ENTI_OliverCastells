@@ -28,6 +28,8 @@ public:
 	virtual void Update();
 
 	void SetBounds();
+	void SetType(GameObjectType type);
+	void SetDefaultType();
 };
 
 GameObject::GameObject(int posX, int posY, int w, int h, SDL_Texture* tex)
@@ -53,6 +55,15 @@ void GameObject::SetPosition(int x, int y)
 Vector GameObject::GetPosition()
 {
 	return position;
+}
+
+void GameObject::SetType(GameObjectType t)
+{
+	type = t;
+}
+void GameObject::SetDefaultType()
+{
+	type = NONE;
 }
 
 void GameObject::Draw()
