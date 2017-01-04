@@ -50,7 +50,7 @@ Vector GameObject::GetPosition()
 
 void GameObject::Draw()
 {
-	R.Render(texture, R.GetAtlasRegion(Vector{ 1,0 }), *bounds);
+	R.Render(texture, R.GetAtlasRegion(ATLAS_BLOCK_RECT), *bounds);
 }
 
 void GameObject::Update()
