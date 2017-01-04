@@ -4,13 +4,18 @@
 #include <queue>
 #include <iostream>
 
+#define UP SDL_SCANCODE_UP
+#define DOWN SDL_SCANCODE_DOWN
+#define LEFT SDL_SCANCODE_LEFT
+#define RIGHT SDL_SCANCODE_RIGHT
+
 #define IM InputManager::Instance()
 
 class InputManager {
 	InputManager() = default;
 	InputManager(const InputManager &rhs) = delete;
 	InputManager &operator=(const InputManager &rhs) = delete;
-	enum class InputValue{LEFT = SDL_SCANCODE_LEFT, RIGHT = SDL_SCANCODE_RIGHT, UP = SDL_SCANCODE_UP, DOWN = SDL_SCANCODE_DOWN};
+	//enum class InputValue{LEFT = SDL_SCANCODE_LEFT, RIGHT = SDL_SCANCODE_RIGHT, UP = SDL_SCANCODE_UP, DOWN = SDL_SCANCODE_DOWN};
 public:
 	~InputManager() = default;
 	inline static InputManager &Instance() {
@@ -29,11 +34,11 @@ public:
 	}
 	inline bool HasQuit(void) const { return m_exit; }
 
-	inline InputValue* getInput() {
+	inline int getInput() {
 		return m_inputValues.front.pop();
 	}
 
 private:
 	bool m_exit = false;
-	std::queue<InputValue*> m_inputValues;
+	std::queue<int> m_inputValues;
 };

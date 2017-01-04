@@ -89,6 +89,6 @@ public:
 	}
 	void Update()
 	{
-		SM.Update();
+		//SM.Update();
 	}
 };
