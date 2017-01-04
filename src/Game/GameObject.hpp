@@ -1,6 +1,7 @@
 #pragma once
 //#include "SDL\SDL.h"
 #include "Vector.hpp"
+#include "Renderer.hpp"
 //#include "SceneManager.hpp"
 
 class GameObject
@@ -21,7 +22,7 @@ public:
 	virtual void Draw();
 	virtual void Update();
 
-	void UpdateBounds();
+	void SetBounds();
 };
 
 GameObject::GameObject(int posX, int posY, int w, int h, SDL_Texture* tex)
@@ -33,7 +34,7 @@ GameObject::GameObject(int posX, int posY, int w, int h, SDL_Texture* tex)
 
 	texture = tex;
 
-	UpdateBounds();
+	SetBounds();
 }
 
 void GameObject::SetPosition(int x, int y)
@@ -49,7 +50,7 @@ Vector GameObject::GetPosition()
 
 void GameObject::Draw()
 {
-	R.RenderTexture(texture, nullptr, *bounds);
+	R.Render(texture, nullptr, *bounds);
 }
 
 void GameObject::Update()
@@ -57,7 +58,7 @@ void GameObject::Update()
 	//SetBounds();
 }
 
-void GameObject::UpdateBounds()
+void GameObject::SetBounds()
 {
-	bounds = new SDL_Rect{ position.x - width / 2, position.y - height / 2, position.x + width / 2, position.y + height / 2 };
+	bounds = new SDL_Rect{ position.x, position.y, width, height };
 }

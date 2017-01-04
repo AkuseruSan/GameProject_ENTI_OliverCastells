@@ -7,9 +7,7 @@
 #define WW Window::Instance().GetWindow()
 
 class Window {
-	Window(const std::string &&name, int &&screenWidth, int &&screenHeight){
-		myWindow = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth, screenHeight, 4);
-	}
+
 public:
 	inline static Window& Instance() {
 		static Window window("Game Window", SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -26,5 +24,10 @@ public:
 	//inline SDL_Window* operator() (void) { return myWindow; }
 
 private:
+	Window(const std::string &&name, int &&screenWidth, int &&screenHeight) {
+		myWindow = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth, screenHeight, 4);
+	}
+
 	SDL_Window* myWindow{ nullptr };
+	SDL_Surface* surface;
 };
