@@ -34,7 +34,15 @@ public:
 	void RenderTexture(SDL_Texture* tex, SDL_Rect* sourceRect, SDL_Rect& destRect)
 	{
 		SDL_RenderCopy(myRenderer, tex, sourceRect, &destRect);
+		//SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
+		//SDL_RenderCopyEx(myRenderer, tex, sourceRect, &destRect, 0, new SDL_Point{ SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED }, flip);
 	}
+
+	void Render(SDL_Texture* tex, SDL_Rect* sourceRect, SDL_Rect& destRect, int flag)
+	{
+
+	}
+
 	void RenderText()
 	{
 
