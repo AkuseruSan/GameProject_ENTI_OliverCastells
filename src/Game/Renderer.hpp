@@ -7,8 +7,18 @@
 #define R Renderer::Instance()//Game Engine Renderer
 #define RR Renderer::Instance().GetRenderer()//SDL Renderer
 
-#define ATLAS_TEXTURE Texture{"ATLAS", "../../res/gfx/bg.jpg"}
-#define BACKGROUND_TEXTURE Texture{"BCKG", "../../res/tex/bckg.png"}
+//Texture IDs
+#define ATLAS_TEXTURE				Texture{"ATLAS", "../../res/tex/snake_spritesheet.jpg"}
+
+
+//Atlas Regions
+#define ATLAS_NULL_RECT				Vector{0, 0}
+#define ATLAS_BLOCK_RECT			Vector{1, 0}
+#define ATLAS_APPLE_RECT			Vector{2, 0}
+#define ATLAS_SNAKESTART_RECT		Vector{0, 1}
+#define ATLAS_SNAKE_RECT			Vector{1, 1}
+#define ATLAS_SNAKEEND_RECT			Vector{2, 1}
+
 
 struct Texture
 {
@@ -48,12 +58,15 @@ public:
 
 	}
 
-	SDL_Rect* GetAtlasRegion(Vector position, Vector size)
+	SDL_Rect* GetAtlasRegion(Vector position)
 	{
 		SDL_Rect* rect;
-		GetTexture(ATLAS_TEXTURE.key);
 		
-		return new SDL_Rect{0,0,0,0};
+		int w, h;
+
+		SDL_QueryTexture(GetTexture(ATLAS_TEXTURE.key), NULL, NULL, &w, &h);
+		
+		return new SDL_Rect{(w/ ATLAS_WIDTH)*position.x, (h/ ATLAS_HEIGHT)*position.y, w/ ATLAS_WIDTH, h/ ATLAS_HEIGHT};
 	}
 
 	void LoadTexture(std::string name, const char* path)
