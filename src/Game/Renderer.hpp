@@ -31,7 +31,7 @@ public:
 	{
 		return myRenderer;
 	}
-	void Render(SDL_Texture* tex, SDL_Rect* sourceRect, SDL_Rect& destRect)
+	void RenderTexture(SDL_Texture* tex, SDL_Rect* sourceRect, SDL_Rect& destRect)
 	{
 		SDL_RenderCopy(myRenderer, tex, sourceRect, &destRect);
 		//SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
@@ -73,7 +73,6 @@ private:
 		myRenderer = SDL_CreateRenderer(WW, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	}
 	std::map<std::string, SDL_Texture*> sprites;
-
 	Renderer(const Renderer&);
 	Renderer& operator=(const Renderer&);
 

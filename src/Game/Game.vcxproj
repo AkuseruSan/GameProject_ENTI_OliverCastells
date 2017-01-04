@@ -118,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataManager.hpp" />
+    <ClInclude Include="GameEngine.cpp" />
     <ClInclude Include="GameEngine.hpp" />
     <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="Grid.hpp" />

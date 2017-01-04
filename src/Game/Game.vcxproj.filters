@@ -21,8 +21,17 @@
     <ClInclude Include="Renderer.hpp">
       <Filter>View</Filter>
     </ClInclude>
+    <ClInclude Include="Vector.hpp">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.hpp">
+      <Filter>Model</Filter>
+    </ClInclude>
     <ClInclude Include="SceneManager.hpp">
       <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.hpp">
+      <Filter>Model</Filter>
     </ClInclude>
     <ClInclude Include="Window.hpp">
       <Filter>View</Filter>
@@ -36,23 +45,17 @@
     <ClInclude Include="InputManager.hpp">
       <Filter>Controller</Filter>
     </ClInclude>
+    <ClInclude Include="Grid.hpp">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine.cpp">
+      <Filter>Controller</Filter>
+    </ClInclude>
     <ClInclude Include="GameEngine.hpp">
       <Filter>Controller</Filter>
     </ClInclude>
     <ClInclude Include="DataManager.hpp">
       <Filter>Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.hpp">
-      <Filter>Model</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.hpp">
-      <Filter>Model</Filter>
-    </ClInclude>
-    <ClInclude Include="Grid.hpp">
-      <Filter>Model</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector.hpp">
-      <Filter>Tools</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

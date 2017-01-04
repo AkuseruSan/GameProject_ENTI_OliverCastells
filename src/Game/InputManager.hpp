@@ -4,10 +4,10 @@
 #include <queue>
 #include <iostream>
 
-#define UP SDL_SCANCODE_UP
-#define DOWN SDL_SCANCODE_DOWN
-#define LEFT SDL_SCANCODE_LEFT
-#define RIGHT SDL_SCANCODE_RIGHT
+#define UP 1
+#define RIGHT 2
+#define DOWN 3
+#define LEFT 4
 
 #define IM InputManager::Instance()
 
@@ -15,7 +15,7 @@ class InputManager {
 	InputManager() = default;
 	InputManager(const InputManager &rhs) = delete;
 	InputManager &operator=(const InputManager &rhs) = delete;
-	//enum class InputValue{LEFT = SDL_SCANCODE_LEFT, RIGHT = SDL_SCANCODE_RIGHT, UP = SDL_SCANCODE_UP, DOWN = SDL_SCANCODE_DOWN};
+
 public:
 	~InputManager() = default;
 	inline static InputManager &Instance() {
@@ -24,21 +24,42 @@ public:
 	}
 	void Update(void) {
 		SDL_Event evnt;
-		if (SDL_PollEvent(&evnt) && SDL_PollEvent(&evnt) != (int)m_inputValues.back()) {
-			switch (evnt.type)
-			{
-			case SDL_QUIT:				m_exit = true; break;
-			case SDL_KEYDOWN:			m_inputValues.push.back(evnt); break;
+		if (SDL_PollEvent(&evnt)) {
+			switch (evnt.type) {
+			case SDL_QUIT:
+				m_exit = true;
+				break;
+			case SDL_KEYDOWN:
+				if (evnt.key.keysym.sym == SDLK_UP && direction != DOWN)
+				{
+					direction = UP;
+					break;
+				}
+				if (evnt.key.keysym.sym == SDLK_DOWN && direction != UP)
+				{
+					direction = DOWN;
+					break;
+				}
+				if (evnt.key.keysym.sym == SDLK_LEFT && direction != RIGHT)
+				{
+					direction = LEFT;
+					break;
+				}
+				if (evnt.key.keysym.sym == SDLK_RIGHT && direction != LEFT)
+				{
+					direction = RIGHT;
+					break;
+				}
 			}
 		}
 	}
 	inline bool HasQuit(void) const { return m_exit; }
 
-	inline int getInput() {
-		return m_inputValues.front.pop();
+	inline int getDirction() {
+		return direction;
 	}
 
 private:
 	bool m_exit = false;
-	std::queue<int> m_inputValues;
+	int direction;
 };
