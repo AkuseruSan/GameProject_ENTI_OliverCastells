@@ -10,6 +10,10 @@
 #include "System.hpp"
 #include "SceneManager.hpp"
 #include "DataManager.hpp"
+#include "InputManager.hpp"
+
+
+#include <iostream>
 
 #define GE GameEngine::Instance()
 
@@ -90,5 +94,9 @@ public:
 	void Update()
 	{
 		SM.Update();
+		IM.Update();
+		int *aux = IM.GetDirction();
+		std::cout << aux << std::endl;
+		delete(aux);
 	}
 };

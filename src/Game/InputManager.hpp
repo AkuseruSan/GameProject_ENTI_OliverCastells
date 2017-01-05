@@ -2,13 +2,14 @@
 
 #include <SDL/SDL.h>
 #include <queue>
+#include "System.hpp"
 
 #define IM InputManager::Instance()
 
 class InputManager {
-	InputManager() = default;
-	InputManager(const InputManager &rhs) = delete;
-	InputManager &operator=(const InputManager &rhs) = delete;
+	InputManager() {}
+	InputManager(InputManager const&) = delete;
+	void operator=(InputManager const&) = delete;
 
 public:
 	~InputManager() = default;
@@ -18,40 +19,54 @@ public:
 	}
 	void Update(void) {
 		SDL_Event evnt;
-		while (SDL_PollEvent(&evnt)) {
+		bool getEv = true;
+		while (getEv && SDL_PollEvent(&evnt)) {
 			switch (evnt.type) {
 			case SDL_QUIT:
 				m_exit = true;
+				getEv = false;
+				break;
+			case SDL_MOUSEBUTTONDOWN:
+				direction.push(7);
+				break;
+			case SDL_MOUSEMOTION:
+				direction.push(8);
 				break;
 			case SDL_KEYDOWN:
-				if (evnt.key.keysym.sym == SDLK_UP && direction.back() != DIR_DOWN && direction.back() != DIR_UP)
-				{
-					direction.push(DIR_UP);
+				switch (evnt.key.keysym.sym) {
+				case SDLK_UP: 
+					if (direction.back() != DIR_DOWN && direction.back() != DIR_UP)
+						direction.push(DIR_UP);
+					getEv = false;
 					break;
-				}
-				else if (evnt.key.keysym.sym == SDLK_DOWN && direction.back() != DIR_UP && direction.back() != DIR_DOWN)
-				{
+				case SDLK_DOWN:
+				if (direction.back() != DIR_DOWN && direction.back() != DIR_UP)
 					direction.push(DIR_DOWN);
-					break;
-				}
-				else if (evnt.key.keysym.sym == SDLK_LEFT && direction.back() != DIR_RIGHT && direction.back() != DIR_LEFT)
-				{
+				getEv = false;
+				break;
+				case SDLK_LEFT:
+				if (direction.back() != DIR_RIGHT && direction.back() != DIR_LEFT)
 					direction.push(DIR_LEFT);
-					break;
-				}
-				else if (evnt.key.keysym.sym == SDLK_RIGHT && direction.back() != DIR_LEFT && direction.back() != DIR_RIGHT)
-				{
+				getEv = false;
+				break;
+				case SDLK_RIGHT:
+				if (direction.back() != DIR_RIGHT && direction.back() != DIR_LEFT)
 					direction.push(DIR_RIGHT);
+				getEv = false;
+				break;
+				default:
+					getEv = false;
 					break;
 				}
 			default:
+				getEv = false;
 				break;
 			}
 		}
 	}
 	inline bool HasQuit(void) const { return m_exit; }
-	inline int getDirction(void)  const { if (!direction.empty()) return direction.front(); }
-	inline void deleteDirection(void) { if (!direction.empty()) direction.pop(); }
+	inline int GetDirction(void)  const { if (!direction.empty()) return direction.front(); }
+	inline void DeleteDirection(void) { if (!direction.empty()) direction.pop(); }
 
 private:
 	bool m_exit = false;
