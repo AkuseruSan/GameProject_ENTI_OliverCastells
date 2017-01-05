@@ -7,7 +7,6 @@
 #include <math.h>
 
 
-enum Dir {UP, DOWN, LEFT, RIGHT};
 class PlayerController
 {
 private:
@@ -28,30 +27,35 @@ public:
 	{
 		controlledObject = SM.GetCurentScene()->GetGrid()->GetObjectFromGrid(pos.x, pos.y);
 
-		Move(RIGHT);
+		Move();
 	}
 
-	void Move(Dir dir)
+	void Die()
+	{
+
+	}
+
+	void Move()
 	{
 		Vector dirVec;
 		
 		controlledObject->SetDefaultType();
 
-		switch (dir)
+		switch (IM.GetDirction())
 		{
-			case UP:
+			case DIR_UP:
 			{
 				if(pos.y != 0) pos.y -= 1;
 			}break;
-			case DOWN:
+			case DIR_DOWN:
 			{
 				if(pos.y != SM.GetCurentScene()->GetGrid()->GetSize().y - 1) pos.y += 1;
 			}break;
-			case LEFT:
+			case DIR_LEFT:
 			{
 				if (pos.x != 0) pos.x -= 1;
 			}break;
-			case RIGHT:
+			case DIR_RIGHT:
 			{
 				if (pos.x < SM.GetCurentScene()->GetGrid()->GetSize().x - 1) pos.x += 1;
 			}break;
