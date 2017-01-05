@@ -17,13 +17,13 @@ public:
 		static InputManager inputManager;
 		return inputManager;
 	}
-	void Update(void) {
+	void Update(bool& isRun) {
 		SDL_Event evnt;
 		bool getEv = true;
 		while (getEv && SDL_PollEvent(&evnt)) {
 			switch (evnt.type) {
 			case SDL_QUIT:
-				m_exit = true;
+				isRun = false;
 				getEv = false;
 				break;
 			case SDL_MOUSEBUTTONDOWN:
@@ -64,11 +64,9 @@ public:
 			}
 		}
 	}
-	inline bool HasQuit(void) const { return m_exit; }
 	inline int GetDirction(void)  const { if (!direction.empty()) return direction.front(); }
 	inline void DeleteDirection(void) { if (!direction.empty()) direction.pop(); }
 
 private:
-	bool m_exit = false;
 	std::queue<int> direction;
 };

@@ -71,13 +71,18 @@ public:
 		SDL_Event evnt;
 		for (bool isRunning{ true }; isRunning;) {
 			// HANDLE EVENTS
-			while (SDL_PollEvent(&evnt)) {
-				switch (evnt.type) {
-				case SDL_QUIT:			isRunning = false; break;
-				//case SDL_MOUSEMOTION:	//playerTarget.x = evnt.motion.x - 50; playerTarget.y = evnt.motion.y - 50; break;
-				default:;
-				}
-			}
+			IM.Update(isRunning);
+			int aux = IM.GetDirction();
+			std::cout << aux << std::endl;
+			IM.DeleteDirection();
+
+			//while (SDL_PollEvent(&evnt)) {
+			//	switch (evnt.type) {
+			//	case SDL_QUIT:			isRunning = false; break;
+			//	//case SDL_MOUSEMOTION:	//playerTarget.x = evnt.motion.x - 50; playerTarget.y = evnt.motion.y - 50; break;
+			//	default:;
+			//	}
+			//}
 
 			// UPDATE
 			Update();
@@ -100,12 +105,7 @@ public:
 	}
 	void Update()
 	{
-		IM.Update();
-		int aux = IM.GetDirction();
-		std::cout << aux << std::endl;
-		IM.DeleteDirection();
-
 		SM.Update();
-		pc->Update();
+		//pc->Update();
 	}
 };
