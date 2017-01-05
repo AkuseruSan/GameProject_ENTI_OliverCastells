@@ -59,9 +59,7 @@ public:
 	}
 
 	SDL_Rect* GetAtlasRegion(Vector position)
-	{
-		SDL_Rect* rect;
-		
+	{		
 		int w, h;
 
 		SDL_QueryTexture(GetTexture(ATLAS_TEXTURE.key), NULL, NULL, &w, &h);

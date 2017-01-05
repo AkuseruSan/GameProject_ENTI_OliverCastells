@@ -11,6 +11,7 @@
 #include "SceneManager.hpp"
 #include "DataManager.hpp"
 #include "InputManager.hpp"
+#include "PlayerController.hpp"
 
 
 #include <iostream>
@@ -24,8 +25,9 @@ class GameEngine
 private:
 	GameEngine() 
 	{
-
+		pc = new PlayerController();
 	}
+	PlayerController* pc;
 public:
 	inline static GameEngine &Instance() {
 		static GameEngine ge;
@@ -34,6 +36,11 @@ public:
 	~GameEngine() 
 	{
 
+	}
+
+	PlayerController& GetPlayerController()
+	{
+		return *pc;
 	}
 
 	void Init()
@@ -64,7 +71,13 @@ public:
 		SDL_Event evnt;
 		for (bool isRunning{ true }; isRunning;) {
 			// HANDLE EVENTS
-			
+			while (SDL_PollEvent(&evnt)) {
+				switch (evnt.type) {
+				case SDL_QUIT:			isRunning = false; break;
+				//case SDL_MOUSEMOTION:	//playerTarget.x = evnt.motion.x - 50; playerTarget.y = evnt.motion.y - 50; break;
+				default:;
+				}
+			}
 
 			// UPDATE
 			Update();
@@ -93,5 +106,6 @@ public:
 		IM.DeleteDirection();
 
 		SM.Update();
+		pc->Update();
 	}
 };
