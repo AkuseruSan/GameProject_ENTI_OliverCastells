@@ -19,54 +19,21 @@ public:
 	}
 	void Update(bool& isRun) {
 		SDL_Event evnt;
-		bool getEv = true;
-		while (getEv && SDL_PollEvent(&evnt)) {
+		while (SDL_PollEvent(&evnt)) {
 			switch (evnt.type) {
-			case SDL_QUIT:
-				isRun = false;
-				getEv = false;
-				break;
-			case SDL_MOUSEBUTTONDOWN:
-				direction.push(7);
-				break;
-			case SDL_MOUSEMOTION:
-				direction.push(8);
-				break;
+			case SDL_QUIT:		isRun = false;	break;
 			case SDL_KEYDOWN:
 				switch (evnt.key.keysym.sym) {
-				case SDLK_UP: 
-					if (direction.back() != DIR_DOWN && direction.back() != DIR_UP)
-						direction.push(DIR_UP);
-					getEv = false;
-					break;
-				case SDLK_DOWN:
-				if (direction.back() != DIR_DOWN && direction.back() != DIR_UP)
-					direction.push(DIR_DOWN);
-				getEv = false;
-				break;
-				case SDLK_LEFT:
-				if (direction.back() != DIR_RIGHT && direction.back() != DIR_LEFT)
-					direction.push(DIR_LEFT);
-				getEv = false;
-				break;
-				case SDLK_RIGHT:
-				if (direction.back() != DIR_RIGHT && direction.back() != DIR_LEFT)
-					direction.push(DIR_RIGHT);
-				getEv = false;
-				break;
-				default:
-					getEv = false;
-					break;
+				case SDLK_UP:		if (direction != DIR_DOWN)	direction = DIR_UP;		break;
+				case SDLK_DOWN:		if (direction != DIR_UP)	direction = DIR_DOWN;	break;
+				case SDLK_LEFT:		if (direction!= DIR_RIGHT)	direction = DIR_LEFT;	break;
+				case SDLK_RIGHT:	if (direction != DIR_LEFT)	direction = DIR_RIGHT;	break;
 				}
-			default:
-				getEv = false;
-				break;
 			}
 		}
 	}
-	inline int GetDirction(void)  const { if (!direction.empty()) return direction.front(); }
-	inline void DeleteDirection(void) { if (!direction.empty()) direction.pop(); }
-
+	inline int GetDirction(void)  const { return direction; }
+	inline int ResetDirection(void) { direction = 0; }
 private:
-	std::queue<int> direction;
+	int direction = 0;
 };

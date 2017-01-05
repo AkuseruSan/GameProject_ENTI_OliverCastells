@@ -74,7 +74,7 @@ public:
 			IM.Update(isRunning);
 			int aux = IM.GetDirction();
 			std::cout << aux << std::endl;
-			IM.DeleteDirection();
+			//IM.DeleteDirection();
 
 			//while (SDL_PollEvent(&evnt)) {
 			//	switch (evnt.type) {
