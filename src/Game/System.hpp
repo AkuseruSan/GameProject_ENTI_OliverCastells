@@ -12,7 +12,8 @@
 #define ATLAS_WIDTH 3
 #define ATLAS_HEIGHT 2
 
-#define DELTA_TIME 85
+#define SCREEN_FPS 120.0f
+#define SCREEN_TICKS_PER_FRAME (1000.0f / SCREEN_FPS)
 
 #define DIR_UP 1
 #define DIR_RIGHT 2

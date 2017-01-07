@@ -33,7 +33,7 @@ public:
 		}
 	}
 	inline int GetDirction(void)  const { return direction; }
-	inline int ResetDirection(void) { direction = 0; }
+	inline int ResetDirection(void) { direction = NULL; }
 private:
-	int direction = 0;
+	int direction = NULL;
 };
