@@ -13,20 +13,12 @@ public:
 		static Window window("Game Window", SCREEN_WIDTH, SCREEN_HEIGHT);
 		return window;
 	}
-	~Window() {
-		SDL_DestroyWindow(myWindow), myWindow = nullptr; //Destroy window
-		SDL_Quit();
-	}
+	~Window();
 
-	SDL_Window* GetWindow() {
-		return myWindow;
-	}
-	//inline SDL_Window* operator() (void) { return myWindow; }
+	SDL_Window* GetWindow();
 
 private:
-	Window(const std::string &&name, int &&screenWidth, int &&screenHeight) {
-		myWindow = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth, screenHeight, 4);
-	}
+	Window(const std::string &&name, int &&screenWidth, int &&screenHeight);
 
 	SDL_Window* myWindow{ nullptr };
 	SDL_Surface* surface;

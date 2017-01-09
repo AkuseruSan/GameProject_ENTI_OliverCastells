@@ -2,44 +2,23 @@
 #include "Scene.hpp"
 #include "XML\rapidxml.hpp"
 #include "XML\rapidxml_iterators.hpp"
-//#include "DataManager.hpp"
+#include "DataManager.hpp"
 
 #define SM SceneManager::GetInstance()
 
 class SceneManager
 {
 public:
-	static SceneManager& GetInstance()
-	{
-		static SceneManager inst = SceneManager();
-		return inst;
-	}
+	static SceneManager& GetInstance();
 
-	Scene* GetCurentScene() 
-	{
-		return currentScene;
-	}
-	void InitScene(rapidxml::xml_document<>& data, int index)
-	{
-		
-		s_mainMenu = new Scene(data);
-		currentScene = s_mainMenu;
-	}
+	Scene* GetCurentScene();
+	void InitScene(rapidxml::xml_document<>& data, int index);
 
-	void Update()
-	{
-		GetCurentScene()->Update();
-	}
-	void Draw()
-	{
-		GetCurentScene()->Draw();
-	}
+	void Update();
+	void Draw();
 
 private:
-	SceneManager()
-	{
-
-	}
+	SceneManager();
 
 	SceneManager(const SceneManager&);
 	SceneManager& operator=(const SceneManager&);

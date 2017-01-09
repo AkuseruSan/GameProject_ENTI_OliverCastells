@@ -1,3 +1,4 @@
+#pragma once
 #include "XML\rapidxml.hpp"
 #include "XML\rapidxml_print.hpp"
 #include "XML\rapidxml_utils.hpp"
@@ -12,51 +13,18 @@
 class DataManager
 {
 public:
-	static DataManager& GetInstance()
-	{
-		static DataManager inst = DataManager();
-		return inst;
-	}
+	static DataManager& GetInstance();
 
-	void LoadFileXML(char* path)
-	{
-		readFile = std::ifstream(path);
+	void LoadFileXML(char* path);
 
-		std::stringstream buffer;
-		buffer << readFile.rdbuf();
-		readFile.close();
+	void SaveFileXML(char* path);
 
-		content = buffer.str();
-		data.parse<rapidxml::parse_default>(&content[0]);
+	void ClearData();
 
-	}
-
-	void SaveFileXML(char* path)
-	{
-		writeFile = std::ofstream(path);
-		
-		writeFile << data;
-
-		data.clear();	
-	}
-
-	void ClearData()
-	{
-		data.clear();
-	}
-
-	rapidxml::xml_document<>& GetData()
-	{
-		if (data.first_node() == 0) throw "No loaded data!";
-		else return data;
-		
-	}
+	rapidxml::xml_document<>& GetData();
 
 private:
-	DataManager()
-	{
-
-	}
+	DataManager();
 
 	DataManager(const DataManager&);
 	DataManager& operator=(const DataManager&);
