@@ -1,45 +1,29 @@
 #pragma once
 #include "Scene.hpp"
+#include "XML\rapidxml.hpp"
+#include "XML\rapidxml_iterators.hpp"
+#include "DataManager.hpp"
 
 #define SM SceneManager::GetInstance()
 
 class SceneManager
 {
 public:
-	static SceneManager& GetInstance()
-	{
-		static SceneManager inst = SceneManager();
-		return inst;
-	}
+	static SceneManager& GetInstance();
 
-	Scene* GetCurentScene() 
-	{
-		return currentScene;
-	}
-	void InitScenes()
-	{
-		s_mainMenu = new Scene(0);
-	}
+	Scene* GetCurentScene();
+	void InitScene(rapidxml::xml_document<>& data);
 
-	void Update()
-	{
-		GetCurentScene()->Update();
-	}
-	void Draw()
-	{
-		GetCurentScene()->Draw();
-	}
+	void Update();
+	void Draw();
 
 private:
-	SceneManager()
-	{
-		InitScenes();
-		currentScene = s_mainMenu;
-	}
+	SceneManager();
 
 	SceneManager(const SceneManager&);
 	SceneManager& operator=(const SceneManager&);
 
+	std::map<int, Scene*> scenes;
 	Scene* s_mainMenu, s_game;
 	Scene* currentScene;
 };

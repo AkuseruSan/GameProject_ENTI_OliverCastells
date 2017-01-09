@@ -1,41 +1,38 @@
+#pragma once
 #include "XML\rapidxml.hpp"
+#include "XML\rapidxml_print.hpp"
+#include "XML\rapidxml_utils.hpp"
+#include "XML\rapidxml_iterators.hpp"
+
+#include <iostream>
+#include <fstream>
+#include <sstream>
 
 #define DM DataManager::GetInstance()
 
 class DataManager
 {
 public:
-	static DataManager& GetInstance()
-	{
-		static DataManager inst = DataManager();
-		return inst;
-	}
+	static DataManager& GetInstance();
 
-	void WriteXML()
-	{
+	void LoadFileXML(char* path);
 
-	}
+	void SaveFileXML(char* path);
 
-	void ReadXML()
-	{
+	void ClearData();
 
-	}
-
-	rapidxml::xml_document<>* GetOpenData()
-	{
-		if (openData != nullptr) return openData;
-		else throw "No loaded data!";
-	}
+	rapidxml::xml_document<>& GetData();
 
 private:
-	DataManager()
-	{
-		openData = nullptr;
-	}
+	DataManager();
 
 	DataManager(const DataManager&);
 	DataManager& operator=(const DataManager&);
 
-	rapidxml::xml_document<>* openData;
+	rapidxml::xml_document<> data;
+	std::ifstream readFile;
+	std::ofstream writeFile;
+
+	std::string content;
 };
 

@@ -1,19 +1,12 @@
 #pragma once
 
 #define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
+#define SCREEN_HEIGHT 640
 
-#define GRID_LINES 25
-#define GRID_COLUMNS 25
-
-#define CELL_WIDTH SCREEN_WIDTH/GRID_LINES
-#define CELL_HEIGHT SCREEN_HEIGHT/GRID_COLUMNS
+#define GAMEDATA_PATH "GameData.xml"
 
 #define ATLAS_WIDTH 3
 #define ATLAS_HEIGHT 2
-
-#define SCREEN_FPS 120.0f
-#define SCREEN_TICKS_PER_FRAME (1000.0f / SCREEN_FPS)
 
 #define DIR_UP 1
 #define DIR_RIGHT 2
