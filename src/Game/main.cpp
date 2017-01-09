@@ -12,8 +12,11 @@ int main(int, char*[]) {
 	try {
 		// --- INIT ---
 
-		GE.Run();
+		DM.LoadFileXML("GameData.xml");
 
+		std::cout << DM.GetData().first_node()->name() << std::endl;
+		//GE.Run();
+		getchar();
 		// --- SPRITES ---
 
 
