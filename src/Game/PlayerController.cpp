@@ -46,7 +46,7 @@ void PlayerController::Move()
 	}break;
 	case DIR_DOWN:
 	{
-		if (pos.y != SM.GetCurentScene()->GetGrid()->GetSize().y - 1) pos.y += 1;
+		if (pos.y != SM.GetCurentScene()->GetGrid()->GetSize() - 1) pos.y += 1;
 	}break;
 	case DIR_LEFT:
 	{
@@ -54,7 +54,7 @@ void PlayerController::Move()
 	}break;
 	case DIR_RIGHT:
 	{
-		if (pos.x < SM.GetCurentScene()->GetGrid()->GetSize().x - 1) pos.x += 1;
+		if (pos.x < SM.GetCurentScene()->GetGrid()->GetSize() - 1) pos.x += 1;
 	}break;
 	default:
 		break;

@@ -1,9 +1,9 @@
 #include "Scene.hpp"
 
-Scene::Scene(rapidxml::xml_node<>& node)
+Scene::Scene(rapidxml::xml_document<>& data)
 {
-	std::cout << node.name() << std::endl;
-	grid = Grid();
+	std::cout << data.name() << std::endl;
+	grid = Grid(data);
 }
 
 void Scene::Update()

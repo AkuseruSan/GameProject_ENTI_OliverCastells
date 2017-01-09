@@ -1,10 +1,7 @@
 #pragma once
 
 #define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
-
-#define GRID_LINES 25
-#define GRID_COLUMNS 25
+#define SCREEN_HEIGHT 640
 
 #define GAMEDATA_PATH "GameData.xml"
 

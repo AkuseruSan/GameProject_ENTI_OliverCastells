@@ -42,7 +42,7 @@ void GameEngine::Init()
 	R.LoadTexture(ATLAS_TEXTURE.key, ATLAS_TEXTURE.path);
 
 	//Scene Manager
-	SM.InitScene(DM.GetData(), 0);
+	SM.InitScene(DM.GetData());
 }
 
 void GameEngine::GameLoop() {

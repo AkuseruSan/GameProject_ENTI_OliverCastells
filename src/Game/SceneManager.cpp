@@ -1,4 +1,4 @@
- #include "SceneManager.hpp"
+#include "SceneManager.hpp"
 
 
 SceneManager& SceneManager::GetInstance()
@@ -12,7 +12,7 @@ Scene* SceneManager::GetCurentScene()
 	return currentScene;
 }
 
-void SceneManager::InitScene(rapidxml::xml_document<>& data, int index)
+void SceneManager::InitScene(rapidxml::xml_document<>& data)
 {
 
 	s_mainMenu = new Scene(data);

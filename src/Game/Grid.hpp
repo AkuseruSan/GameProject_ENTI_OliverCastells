@@ -2,17 +2,19 @@
 #include "GameObject.hpp"
 #include "Renderer.hpp"
 #include <list>
+#include "DataManager.hpp"
 
 class Grid
 {
 private:
-	int w, h;
-	GameObject* gameObjectsGrid[GRID_LINES][GRID_COLUMNS];
+	int size;
+	GameObject** gameObjectsGrid;
 
 public:
-	Grid();
+	Grid() = default;
+	Grid(rapidxml::xml_document<>&);
 
-	Vector GetSize();
+	int GetSize();
 	GameObject* GetObjectFromGrid(int i, int j);
 
 	void Update();

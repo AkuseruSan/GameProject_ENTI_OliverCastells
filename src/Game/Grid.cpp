@@ -1,48 +1,50 @@
 #include "Grid.hpp"
 
-
-Grid::Grid()
+Grid::Grid(rapidxml::xml_document<>& data)
 {
-	w = GRID_LINES;
-	h = GRID_COLUMNS;
+	size = std::stoi(data.first_node("GameData")->first_node("GameScenes")->first_node("GameScene")->first_attribute("grid_size")->value(), nullptr, 10);
 
-	for (int i = 0; i < w; i++)
+	gameObjectsGrid = new GameObject*[size];
+
+	for (int i = 0; i < size; i++) gameObjectsGrid[i] = new GameObject[size];
+
+	for (int i = 0; i < size; i++)
 	{
-		for (int j = 0; j < h; j++)
+		for (int j = 0; j < size; j++)
 		{
-			gameObjectsGrid[i][j] = new GameObject(SCREEN_WIDTH / w*i, SCREEN_HEIGHT / h*j, SCREEN_WIDTH / w, SCREEN_HEIGHT / h, R.GetTexture(ATLAS_TEXTURE.key), 0);
-
+			gameObjectsGrid[i][j] = GameObject(SCREEN_WIDTH / size*i, SCREEN_HEIGHT / size*j, SCREEN_WIDTH / size, SCREEN_HEIGHT / size, R.GetTexture(ATLAS_TEXTURE.key), 0);
+			if (i == 0 || i == size -1 || j == 0 || j == size -1) gameObjectsGrid[i][j].SetType(BLOCK);
 		}
 	}
 }
 
-Vector Grid::GetSize()
+int Grid::GetSize()
 {
-	return Vector{ w,h };
+	return size;
 }
 GameObject* Grid::GetObjectFromGrid(int i, int j)
 {
-	return gameObjectsGrid[i][j];
+	return &gameObjectsGrid[i][j];
 }
 
 void Grid::Update()
 {
-	for (int i = 0; i < GRID_LINES; i++)
+	for (int i = 0; i < size; i++)
 	{
-		for (int j = 0; j < GRID_COLUMNS; j++)
+		for (int j = 0; j < size; j++)
 		{
-			gameObjectsGrid[i][j]->Update();
+			gameObjectsGrid[i][j].Update();
 		}
 	}
 }
 
 void Grid::Draw()
 {
-	for (int i = 0; i < GRID_LINES; i++)
+	for (int i = 0; i < size; i++)
 	{
-		for (int j = 0; j < GRID_COLUMNS; j++)
+		for (int j = 0; j < size; j++)
 		{
-			gameObjectsGrid[i][j]->Draw();
+			gameObjectsGrid[i][j].Draw();
 		}
 	}
 }

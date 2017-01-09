@@ -8,7 +8,7 @@ class Scene
 {
 public:
 	Scene() = default;
-	Scene(rapidxml::xml_node<>& node);
+	Scene(rapidxml::xml_document<>&);
 
 	Grid* GetGrid()
 	{
