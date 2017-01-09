@@ -45,6 +45,9 @@ public:
 
 	void Init()
 	{
+		//Load Game Data
+		DM.LoadFileXML(GAMEDATA_PATH);
+		
 		SDL_Log("Executable built in %s", SDL_GetBasePath());
 		if (SDL_Init(SDL_INIT_EVERYTHING) != 0) throw "Unable to initialize SDL subsystems"s;
 		const Uint8 imgFlags{ IMG_INIT_PNG | IMG_INIT_JPG };
@@ -63,8 +66,8 @@ public:
 		//Sprites
 		R.LoadTexture(ATLAS_TEXTURE.key, ATLAS_TEXTURE.path);
 
-		//Load Game Data
-
+		//Scene Manager
+		SM.InitScene(DM.GetData(), 0);
 	}
 
 	void GameLoop() {

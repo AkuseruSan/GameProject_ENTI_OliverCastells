@@ -10,19 +10,16 @@ private:
 	GameObject* gameObjectsGrid[GRID_LINES][GRID_COLUMNS];
 
 public:
-	Grid() {
-
-	}
-	Grid(int a)//Will need to ask for an XML Node
+	Grid()
 	{
 		w = GRID_LINES;
 		h = GRID_COLUMNS;
 		
-		for (int i = 0; i < GRID_LINES; i++)
+		for (int i = 0; i < w; i++)
 		{
-			for (int j = 0; j < GRID_COLUMNS; j++)
+			for (int j = 0; j < h; j++)
 			{
-				gameObjectsGrid[i][j] = new GameObject(CELL_WIDTH*i, CELL_HEIGHT*j, CELL_WIDTH, CELL_HEIGHT, R.GetTexture(ATLAS_TEXTURE.key));
+				gameObjectsGrid[i][j] = new GameObject(SCREEN_WIDTH/w*i, SCREEN_HEIGHT/h*j, SCREEN_WIDTH/w, SCREEN_HEIGHT/h, R.GetTexture(ATLAS_TEXTURE.key));
 
 			}
 		}

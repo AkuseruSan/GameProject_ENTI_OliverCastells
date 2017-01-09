@@ -1,13 +1,14 @@
 #pragma once
-
+#include <iostream>
 #include "Grid.hpp"
 #include <list>
+#include "XML\rapidxml.hpp"
 
 class Scene
 {
 public:
-	Scene();
-	Scene(int);
+	Scene() = default;
+	Scene(rapidxml::xml_node<>& node);
 
 	Grid* GetGrid()
 	{
@@ -26,10 +27,10 @@ private:
 };
 
 //Class Definition
-Scene::Scene() = default;
-Scene::Scene(int a)
+Scene::Scene(rapidxml::xml_node<>& node)
 {
-	grid = Grid(a);
+	std::cout << node.name() << std::endl;
+	grid = Grid();
 }
 
 void Scene::Update()

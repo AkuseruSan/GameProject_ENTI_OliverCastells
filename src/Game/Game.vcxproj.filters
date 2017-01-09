@@ -13,6 +13,9 @@
     <Filter Include="Tools">
       <UniqueIdentifier>{d34f11bf-c319-44e6-899e-1e554f740029}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Saves&amp;Configs">
+      <UniqueIdentifier>{111652ba-75b7-404c-b2b4-d418f0bb085f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -20,9 +23,6 @@
   <ItemGroup>
     <ClInclude Include="Renderer.hpp">
       <Filter>View</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneManager.hpp">
-      <Filter>Controller</Filter>
     </ClInclude>
     <ClInclude Include="Window.hpp">
       <Filter>View</Filter>
@@ -54,13 +54,16 @@
     <ClInclude Include="PlayerController.hpp">
       <Filter>Model</Filter>
     </ClInclude>
+    <ClInclude Include="SceneManager.hpp">
+      <Filter>Controller</Filter>
+    </ClInclude>
     <ClInclude Include="DataManager.hpp">
       <Filter>Controller</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="GameData.xml">
-      <Filter>Model</Filter>
+      <Filter>Saves&amp;Configs</Filter>
     </Xml>
   </ItemGroup>
 </Project>

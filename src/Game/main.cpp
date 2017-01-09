@@ -6,18 +6,12 @@
 
 #include "GameEngine.hpp"
 
-
 int main(int, char*[]) {
 	using namespace std::string_literals; // Enables to use an array of characters with an "s" at the end as an string literal
 	try {
 		// --- INIT ---
 
-		DM.LoadFileXML("GameData.xml");
-
-		std::cout << DM.GetData().first_node()->name() << std::endl;
-		//GE.Run();
-		getchar();
-		// --- SPRITES ---
+		GE.Run();
 
 
 		//SDL_Texture *playerTexture{ IMG_LoadTexture(RR, "../../res/gfx/blue.png") };

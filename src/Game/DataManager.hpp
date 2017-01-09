@@ -1,5 +1,8 @@
 #include "XML\rapidxml.hpp"
 #include "XML\rapidxml_print.hpp"
+#include "XML\rapidxml_utils.hpp"
+#include "XML\rapidxml_iterators.hpp"
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -17,21 +20,22 @@ public:
 
 	void LoadFileXML(char* path)
 	{
-		std::ifstream file(path);
-		std::stringstream buffer;
-		buffer << file.rdbuf();
-		file.close();
+		readFile = std::ifstream(path);
 
-		std::string content(buffer.str());
-		data.parse<0>(&content[0]);
+		std::stringstream buffer;
+		buffer << readFile.rdbuf();
+		readFile.close();
+
+		content = buffer.str();
+		data.parse<rapidxml::parse_default>(&content[0]);
 
 	}
 
 	void SaveFileXML(char* path)
 	{
-		std::ofstream file(path);
-
-		file << data;
+		writeFile = std::ofstream(path);
+		
+		writeFile << data;
 
 		data.clear();	
 	}
@@ -58,6 +62,9 @@ private:
 	DataManager& operator=(const DataManager&);
 
 	rapidxml::xml_document<> data;
+	std::ifstream readFile;
+	std::ofstream writeFile;
 
+	std::string content;
 };
 

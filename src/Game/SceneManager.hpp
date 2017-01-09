@@ -1,5 +1,8 @@
 #pragma once
 #include "Scene.hpp"
+#include "XML\rapidxml.hpp"
+#include "XML\rapidxml_iterators.hpp"
+//#include "DataManager.hpp"
 
 #define SM SceneManager::GetInstance()
 
@@ -16,9 +19,11 @@ public:
 	{
 		return currentScene;
 	}
-	void InitScenes()
+	void InitScene(rapidxml::xml_document<>& data, int index)
 	{
-		s_mainMenu = new Scene(0);
+		
+		s_mainMenu = new Scene(data);
+		currentScene = s_mainMenu;
 	}
 
 	void Update()
@@ -33,13 +38,13 @@ public:
 private:
 	SceneManager()
 	{
-		InitScenes();
-		currentScene = s_mainMenu;
+
 	}
 
 	SceneManager(const SceneManager&);
 	SceneManager& operator=(const SceneManager&);
 
+	std::map<int, Scene*> scenes;
 	Scene* s_mainMenu, s_game;
 	Scene* currentScene;
 };

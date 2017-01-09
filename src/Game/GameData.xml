@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<gamedata>
-  <gamemap>
-    <level diff="0">
-      
-    </level>
-      <level diff="1">
-      
-    </level>
-    <level diff="2">
-      
-    </level>
-  </gamemap>
-</gamedata>
+<!--0 = VOID | 1 = BLOCK-->
+<GameData>
+  <GameScenes>
+    <GameScene id="0" grid_lines="10" grid_columns="10">
+      <Line id="00">1111111111</Line>
+      <Line id="01">1000000001</Line>
+      <Line id="02">1000000001</Line>
+      <Line id="03">1000000001</Line>
+      <Line id="04">1000000001</Line>
+      <Line id="05">1000000001</Line>
+      <Line id="06">1000000001</Line>
+      <Line id="07">1000000001</Line>
+      <Line id="08">1000000001</Line>
+      <Line id="09">1111111111</Line>
+    </GameScene>
+    <GameScene id="1" grid_lines="15" grid_columns="15">
+      <Line id="00">111111111111111</Line>
+      <Line id="01">100000000000001</Line>
+      <Line id="02">100000000000001</Line>
+      <Line id="03">100000000000001</Line>
+      <Line id="04">100000000000001</Line>
+      <Line id="05">100000000000001</Line>
+      <Line id="06">100000000000001</Line>
+      <Line id="07">100000000000001</Line>
+      <Line id="08">100000000000001</Line>
+      <Line id="09">100000000000001</Line>
+      <Line id="10">100000000000001</Line>
+      <Line id="11">100000000000001</Line>
+      <Line id="12">100000000000001</Line>
+      <Line id="13">100000000000001</Line>
+      <Line id="04">111111111111111</Line>
+    </GameScene>
+  </GameScenes>
+</GameData>
