@@ -5,7 +5,7 @@
 
 
 
-enum GameObjectType {NONE, BLOCK, APPLE, SNAKE};
+enum GameObjectType {NONE, BLOCK, APPLE, SNAKE, SNAKEEND, SNAKESTART};
 
 class GameObject
 {
@@ -13,6 +13,7 @@ private:
 	Vector position;
 	int width, height;
 	int rotation;
+	Vector atlasSection;
 
 	SDL_Rect* bounds;
 	SDL_Texture* texture;

@@ -14,6 +14,7 @@ class PlayerController
 private:
 	GameObject* controlledObject;
 	std::deque<Vector> body;
+	int rotation;
 
 public:
 	PlayerController();

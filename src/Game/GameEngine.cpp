@@ -53,8 +53,6 @@ void GameEngine::GameLoop() {
 		// HANDLE EVENTS
 		IM.Update(isRunning);
 		int aux = IM.GetDirction();
-		std::cout << aux << std::endl;
-		//IM.DeleteDirection();
 
 		// UPDATE
 		Update();
@@ -77,6 +75,8 @@ void GameEngine::Draw()
 }
 void GameEngine::Update()
 {
-	SM.Update();
 	pc->Update();
+	SM.Update();
+
+
 }
