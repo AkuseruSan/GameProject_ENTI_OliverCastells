@@ -52,6 +52,9 @@ void PlayerController::Die()
 
 void PlayerController::GenerateApple() {
 	Vector aPos{ (int)rand() % SM.GetCurentScene()->GetGrid()->GetSize() , (int)rand() % SM.GetCurentScene()->GetGrid()->GetSize() };
+	auto aux = SM.GetCurentScene()->GetGrid()->GetObjectFromGrid(aPos.x, aPos.y);
+	if (aux->GetType() == NONE) aux->SetType(APPLE);
+	else GenerateApple();
 }
 
 void PlayerController::CheckCollision() {
