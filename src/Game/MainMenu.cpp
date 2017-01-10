@@ -7,16 +7,12 @@ MainMenu::MainMenu()
 
 void MainMenu::Update()
 {
-
+	
 }
 
 void MainMenu::Draw()
 {
-	ShowMenu(R.GetFont());
-}
-
-void MainMenu::ShowMenu(TTF_Font* font)
-{
-
-
+	R.RenderText("Easy", textCol, SDL_Rect{ (SCREEN_WIDTH/2) - 50, 50 ,100, 100 });
+	R.RenderText("Medium", textCol, SDL_Rect{ (SCREEN_WIDTH / 2) - 50, SCREEN_HEIGHT/2 - 50, 100, 100 });
+	R.RenderText("Hard", textCol, SDL_Rect{ (SCREEN_WIDTH / 2) - 50, SCREEN_HEIGHT - 200, 100, 100 });
 }
