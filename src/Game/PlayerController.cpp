@@ -33,7 +33,7 @@ void PlayerController::InitSnake()
 	int center = ownerScene->GetGrid()->GetSize() / 2;
 	for (int i = 0; i < 3; i++)
 		body.push_back(Vector{ center, center });
-	GenerateApple();
+	ownerScene->GetGrid()->GenerateApple();
 }
 
 void PlayerController::Die()
@@ -59,13 +59,6 @@ void PlayerController::Die()
 	speed = INITIAL_SPEED;
 }
 
-void PlayerController::GenerateApple() {
-	Vector aPos{ (int)rand() % ownerScene->GetGrid()->GetSize() , (int)rand() % ownerScene->GetGrid()->GetSize() };
-	auto aux = ownerScene->GetGrid()->GetObjectFromGrid(aPos.x, aPos.y);
-	if (aux->GetType() == NONE) aux->SetType(APPLE);
-	else GenerateApple();
-}
-
 void PlayerController::LevelUp() {
 	foodInc += ICREMENT_FOOD * std::stoi(DM.GetDifficultyData(ownerScene->GetDifficulty())->first_attribute("food_increment")->value(), nullptr, 10);
 	eatenApples = 0;
@@ -84,7 +77,7 @@ void PlayerController::CheckCollision() {
 		body.push_back(body.back());
 		if (eatenApples >= INITIAL_FOOD * (std::stoi(DM.GetDifficultyData(ownerScene->GetDifficulty())->first_attribute("food")->value()), nullptr, 1) + foodInc)
 			LevelUp();
-		GenerateApple();
+		ownerScene->GetGrid()->GenerateApple();
 	}	break;
 	default:	Die();	break;
 	}

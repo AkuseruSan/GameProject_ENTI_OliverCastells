@@ -32,7 +32,6 @@ private:
 	void Die();
 	void Move();
 	void CheckCollision();
-	void GenerateApple();
 	void InitSnake();
 	void LevelUp();
 

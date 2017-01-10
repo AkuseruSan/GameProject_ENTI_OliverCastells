@@ -17,6 +17,8 @@ Grid::Grid(int diff)
 			if (i == 0 || i == size -1 || j == 0 || j == size -1) gameObjectsGrid[i][j].SetType(BLOCK);
 		}
 	}
+
+	GenerateObstacles();
 }
 
 int Grid::GetSize()
@@ -24,6 +26,23 @@ int Grid::GetSize()
 
 	return size;
 }
+
+void Grid::GenerateApple() {
+	Vector aPos{ (int)rand() % GetSize() , (int)rand() % GetSize() };
+	auto aux = GetObjectFromGrid(aPos.x, aPos.y);
+	if (aux->GetType() == NONE) aux->SetType(APPLE);
+	else GenerateApple();
+}
+
+void Grid::GenerateObstacles() {
+	int temp = (rand() % 15) + 1;
+	for (int i = 0; i < temp; i++) {
+		Vector aPos{ (int)rand() % GetSize() , (int)rand() % GetSize() };
+		auto aux = GetObjectFromGrid(aPos.x, aPos.y);
+		if (aux->GetType() == NONE) aux->SetType(BLOCK);
+	}
+}
+
 GameObject* Grid::GetObjectFromGrid(int i, int j)
 {
 	return &gameObjectsGrid[i][j];
