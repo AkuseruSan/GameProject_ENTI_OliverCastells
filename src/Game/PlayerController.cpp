@@ -64,6 +64,8 @@ void PlayerController::LevelUp() {
 	eatenApples = 0;
 	level++;
 	speed = INITIAL_SPEED;
+	ownerScene->GetGrid()->DeleteObstacles();
+	ownerScene->GetGrid()->GenerateObstacles();
 }
 
 void PlayerController::CheckCollision() {
