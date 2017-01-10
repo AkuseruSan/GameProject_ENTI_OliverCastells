@@ -48,7 +48,7 @@ void GameEngine::Init()
 	R.LoadTexture(ATLAS_TEXTURE.key, ATLAS_TEXTURE.path);
 
 	//Scene Manager
-	SM.InitScene(0);
+	SM.InitScene(1);
 	pc = new PlayerController(); // AXEL, TE ATREVES A MOVER ESTO Y TE DEPILO LAS BOLAS CON EL CORTACESPED
 }
 
