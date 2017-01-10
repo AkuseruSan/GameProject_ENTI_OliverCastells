@@ -42,11 +42,12 @@ void PlayerController::Die()
 	//Pierde una vida y reinicia el nivel.
 	if (lives > 1) {
 		lives--;
+		int aux = body.size();
 		for each (Vector v in body)
 			ownerScene->GetGrid()->GetObjectFromGrid(v.x, v.y)->SetDefaultType();
 		body.clear();
 		int center = ownerScene->GetGrid()->GetSize() / 2;
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < aux; i++)
 			body.push_back(Vector{ center, center });
 	}
 	else {
