@@ -65,6 +65,7 @@ void PlayerController::CheckCollision() {
 		eateApples++;
 		score += (eateApples * SCORE_UP);
 		GenerateApple();
+		body.push_back(body.back());
 	}	break;
 	default:	Die();	break;
 	}
