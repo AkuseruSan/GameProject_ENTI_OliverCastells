@@ -64,7 +64,7 @@ void PlayerController::GenerateApple() {
 }
 
 void PlayerController::LevelUp() {
-	//foodInc += ICREMENT_FOOD * std::stoi(DM.GetDifficultyData(SM.GetDifficulty())->first_attribute("food_increment")->value(), nullptr, 10);
+	foodInc += ICREMENT_FOOD * std::stoi(DM.GetDifficultyData(SM.GetDifficulty())->first_attribute("food_increment")->value(), nullptr, 10);
 	eatenApples = 0;
 	level++;
 	speed = INITIAL_SPEED;
@@ -79,8 +79,8 @@ void PlayerController::CheckCollision() {
 		score += (eatenApples * SCORE_UP);
 		//speed += score / 1000;
 		body.push_back(body.back());
-		//if (eatenApples == INITIAL_FOOD * (std::stoi(DM.GetDifficultyData(SM.GetDifficulty())->//first_attribute("grid_size")->next_attribute("time")->next_attribute("speed")->next_attribute("food")->value()), nullptr, 10) + foodInc)
-		//	LevelUp();
+		if (eatenApples >= INITIAL_FOOD * (std::stoi(DM.GetDifficultyData(SM.GetDifficulty())->first_attribute("food")->value()), nullptr, 1) + foodInc)
+			LevelUp();
 		GenerateApple();
 	}	break;
 	default:	Die();	break;
