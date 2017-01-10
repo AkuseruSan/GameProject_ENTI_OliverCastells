@@ -9,18 +9,49 @@ SceneManager& SceneManager::GetInstance()
 
 void SceneManager::InitScene(int d)
 {
-
-	s_mainMenu = new Scene(d);
-	currentScene = s_mainMenu;
+	currentScene = new Scene(d);
+	ResetPlayerController();
 }
 
-Scene* SceneManager::GetCurentScene() { return currentScene; }
+Scene* SceneManager::GetCurrentScene() { return currentScene; }
 
-void SceneManager::Update() { GetCurentScene()->Update(); }
+void SceneManager::Update() 
+{ 
+	switch (DM.GetState())
+	{
+		case GameState::MAIN_MENU:
+		{
+			if (IM.GetDirction() == DIR_UP)
+			{
+				DM.SetState(GameState::GAME);
+				InitScene(1);
+			}
+		}break;
+		case GameState::GAME:
+		{
+			playerController->Update();
+			GetCurrentScene()->Update();
+		}break;
+		case GameState::GAME_OVER:
+		{
+			InitScene(0);
+			DM.SetState(GameState::MAIN_MENU);
+			ResetPlayerController();
+		}break;
+	}
+}
 
-void SceneManager::Draw() { GetCurentScene()->Draw(); }
+void SceneManager::Draw() { GetCurrentScene()->Draw(); }
 
-int SceneManager::GetDifficulty() { return GetCurentScene()->GetDifficulty(); }
+int SceneManager::GetDifficulty() { return GetCurrentScene()->GetDifficulty(); }
 
-SceneManager::SceneManager() {}
+SceneManager::SceneManager() 
+{
+	InitScene(0);
+	ResetPlayerController();
+}
 
+void SceneManager::ResetPlayerController()
+{
+	playerController = new PlayerController(GetCurrentScene());
+}

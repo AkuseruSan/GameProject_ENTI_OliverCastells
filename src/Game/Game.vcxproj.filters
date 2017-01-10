@@ -87,6 +87,9 @@
     <ClInclude Include="SceneManager.hpp">
       <Filter>Controller</Filter>
     </ClInclude>
+    <ClInclude Include="MainMenu.hpp">
+      <Filter>Model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="GameData.xml">

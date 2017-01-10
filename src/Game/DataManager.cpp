@@ -43,19 +43,19 @@ rapidxml::xml_node<>* DataManager::GetDifficultyData(int d)
 {
 	if (d == 1)
 	{
-		return GetDataRoot().first_node("GameData")->first_node("Difficulty")->first_node("Easy");
+		return GetDataRoot().first_node("GameData")->first_node("Scene")->first_node("Easy");
 	}
 	else if (d == 2)
 	{
-		return GetDataRoot().first_node("GameData")->first_node("Difficulty")->first_node("Medium");
+		return GetDataRoot().first_node("GameData")->first_node("Scene")->first_node("Medium");
 	}
 	else if (d == 3)
 	{
-		return GetDataRoot().first_node("GameData")->first_node("Difficulty")->first_node("Hard");
+		return GetDataRoot().first_node("GameData")->first_node("Scene")->first_node("Hard");
 	}
 	else if (d == 0)
 	{
-		//MAIN MENU SCENE
+		return GetDataRoot().first_node("GameData")->first_node("Scene")->first_node("MainMenu");
 	}
 	else throw "THAT DIFFICULTY LEVEL DOESN'T EXIST";
 }
@@ -63,4 +63,14 @@ rapidxml::xml_node<>* DataManager::GetDifficultyData(int d)
 DataManager::DataManager()
 {
 
+}
+
+GameState DataManager::GetState()
+{
+	return state;
+}
+
+void DataManager::SetState(GameState s)
+{
+	state = s;
 }

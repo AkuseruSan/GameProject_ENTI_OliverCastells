@@ -10,6 +10,8 @@
 
 #define DM DataManager::GetInstance()
 
+enum GameState { MAIN_MENU, GAME, GAME_OVER };
+
 class DataManager
 {
 public:
@@ -20,9 +22,12 @@ public:
 	void SaveFileXML(char* path);
 
 	void ClearData();
-
+	
 	rapidxml::xml_document<>& GetDataRoot();
 	rapidxml::xml_node<>* GetDifficultyData(int);
+
+	GameState GetState();
+	void SetState(GameState);
 
 private:
 	DataManager();
@@ -35,5 +40,5 @@ private:
 	std::ofstream writeFile;
 
 	std::string content;
+	GameState state;
 };
-

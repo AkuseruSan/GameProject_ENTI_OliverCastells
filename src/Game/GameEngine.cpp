@@ -9,24 +9,12 @@ GameEngine::GameEngine()
 
 GameEngine::~GameEngine()
 {
-	delete (pc);
-}
 
-PlayerController& GameEngine::GetPlayerController()
-{
-	return *pc;
-}
-
-void GameEngine::ResetPlayerController()
-{
-	//Save Binaries from DataManager
-	
-	//pc = new PlayerController();
 }
 
 void GameEngine::Init()
 {
-	//Load Game Data
+	DM.SetState(GameState::MAIN_MENU);
 	DM.LoadFileXML(GAMEDATA_PATH);
 
 	SDL_Log("Executable built in %s", SDL_GetBasePath());
@@ -48,8 +36,6 @@ void GameEngine::Init()
 	R.LoadTexture(ATLAS_TEXTURE.key, ATLAS_TEXTURE.path);
 
 	//Scene Manager
-	SM.InitScene(1);
-	pc = new PlayerController(); // AXEL, TE ATREVES A MOVER ESTO Y TE DEPILO LAS BOLAS CON EL CORTACESPED
 }
 
 void GameEngine::GameLoop() {
@@ -81,7 +67,6 @@ void GameEngine::Draw()
 }
 void GameEngine::Update()
 {
-	pc->Update();
 	SM.Update();
 
 

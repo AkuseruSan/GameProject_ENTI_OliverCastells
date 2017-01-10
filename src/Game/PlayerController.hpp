@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SceneManager.hpp"
+#include "Scene.hpp"
 #include "GameObject.hpp"
 #include "Vector.hpp"
 #include "System.hpp"
@@ -16,6 +16,9 @@ class PlayerController
 private:
 	GameObject* controlledObject;
 	GameObject* apple;
+
+	Scene* ownerScene;
+
 	std::deque<Vector> body;
 	GameObjectType collider;
 	int rotation;
@@ -34,7 +37,7 @@ private:
 	void LevelUp();
 
 public:
-	PlayerController();
+	PlayerController(Scene*);
 	~PlayerController();
 
 	void Update();
