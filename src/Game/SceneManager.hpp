@@ -16,6 +16,7 @@ public:
 
 	void Update();
 	void Draw();
+	int GetDifficulty();
 
 private:
 	SceneManager();

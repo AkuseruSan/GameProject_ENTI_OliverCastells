@@ -1,16 +1,9 @@
 #include "Scene.hpp"
 
-Scene::Scene(int diff)
-{
-	grid = Grid(diff);
-}
+Scene::Scene(int diff) { grid = Grid(diff); }
 
-void Scene::Update()
-{
-	grid.Update();
-}
+void Scene::Update() { grid.Update(); }
 
-void Scene::Draw()
-{
-	grid.Draw();
-}
+void Scene::Draw() { grid.Draw(); }
+
+int Scene::GetDifficulty() { return difficulty; }

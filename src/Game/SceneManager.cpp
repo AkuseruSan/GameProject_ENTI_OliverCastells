@@ -7,11 +7,6 @@ SceneManager& SceneManager::GetInstance()
 	return inst;
 }
 
-Scene* SceneManager::GetCurentScene()
-{
-	return currentScene;
-}
-
 void SceneManager::InitScene(int d)
 {
 
@@ -19,18 +14,13 @@ void SceneManager::InitScene(int d)
 	currentScene = s_mainMenu;
 }
 
-void SceneManager::Update()
-{
-	GetCurentScene()->Update();
-}
+Scene* SceneManager::GetCurentScene() { return currentScene; }
 
-void SceneManager::Draw()
-{
-	GetCurentScene()->Draw();
-}
+void SceneManager::Update() { GetCurentScene()->Update(); }
 
-SceneManager::SceneManager()
-{
+void SceneManager::Draw() { GetCurentScene()->Draw(); }
 
-}
+int SceneManager::GetDifficulty() { return GetCurentScene()->GetDifficulty(); }
+
+SceneManager::SceneManager() {}
 

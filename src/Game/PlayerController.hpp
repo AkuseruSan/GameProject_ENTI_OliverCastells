@@ -23,16 +23,20 @@ private:
 	int speed;
 	long int score;
 	int eatenApples;
-
-public:
-	PlayerController();
-	~PlayerController();
-
-	void InitSnake();
-	void Update();
+	int foodInc;
+	int level;
 
 	void Die();
 	void Move();
 	void CheckCollision();
 	void GenerateApple();
+	void InitSnake();
+	void LevelUp();
+
+public:
+	PlayerController();
+	~PlayerController();
+
+	void Update();
+
 };

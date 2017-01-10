@@ -6,7 +6,8 @@ PlayerController::PlayerController()
 }
 PlayerController::~PlayerController()
 {
-
+	delete(apple);
+	delete(controlledObject);
 }
 
 void PlayerController::Update()
@@ -19,8 +20,10 @@ void PlayerController::Update()
 
 void PlayerController::InitSnake()
 {
+	level = 0;
 	score = 0;
 	eatenApples = 0;
+	foodInc = 0;
 	lives = INITIAL_LIVES;
 	rotation = 0;
 	speed = INITIAL_SPEED;
@@ -45,7 +48,7 @@ void PlayerController::Die()
 			body.push_back(Vector{ center, center });
 	}
 	else {
-
+		
 	}
 	if(collider == BLOCK) controlledObject->SetType(BLOCK);
 	collider = NONE;
@@ -60,16 +63,25 @@ void PlayerController::GenerateApple() {
 	else GenerateApple();
 }
 
+void PlayerController::LevelUp() {
+	//foodInc += ICREMENT_FOOD * std::stoi(DM.GetDifficultyData(SM.GetDifficulty())->first_attribute("food_increment")->value(), nullptr, 10);
+	eatenApples = 0;
+	level++;
+	speed = INITIAL_SPEED;
+}
+
 void PlayerController::CheckCollision() {
 	switch (collider)
 	{
 	case NONE:			break;
 	case APPLE: {
 		eatenApples++;
-		//score += (eatenApples * SCORE_UP);
-		speed += score / 1000;
-		GenerateApple();
+		score += (eatenApples * SCORE_UP);
+		//speed += score / 1000;
 		body.push_back(body.back());
+		//if (eatenApples == INITIAL_FOOD * (std::stoi(DM.GetDifficultyData(SM.GetDifficulty())->//first_attribute("grid_size")->next_attribute("time")->next_attribute("speed")->next_attribute("food")->value()), nullptr, 10) + foodInc)
+		//	LevelUp();
+		GenerateApple();
 	}	break;
 	default:	Die();	break;
 	}

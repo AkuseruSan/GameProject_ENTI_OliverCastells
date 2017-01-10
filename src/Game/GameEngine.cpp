@@ -21,7 +21,7 @@ void GameEngine::ResetPlayerController()
 {
 	//Save Binaries from DataManager
 	
-	pc = new PlayerController();
+	//pc = new PlayerController();
 }
 
 void GameEngine::Init()

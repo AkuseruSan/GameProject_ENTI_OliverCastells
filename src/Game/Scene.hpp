@@ -15,6 +15,8 @@ public:
 		return &grid;
 	}
 
+	int GetDifficulty();
+
 	void Update();
 	void Draw();
 
@@ -23,5 +25,5 @@ private:
 	Grid grid;
 	SDL_Texture* background;
 
-
+	int difficulty;
 };
