@@ -17,6 +17,13 @@ PlayerController& GameEngine::GetPlayerController()
 	return *pc;
 }
 
+void GameEngine::ResetPlayerController()
+{
+	//Save Binaries from DataManager
+	
+	pc = new PlayerController();
+}
+
 void GameEngine::Init()
 {
 	//Load Game Data
@@ -41,7 +48,7 @@ void GameEngine::Init()
 	R.LoadTexture(ATLAS_TEXTURE.key, ATLAS_TEXTURE.path);
 
 	//Scene Manager
-	SM.InitScene(DM.GetData());
+	SM.InitScene(0);
 	pc = new PlayerController(); // AXEL, TE ATREVES A MOVER ESTO Y TE DEPILO LAS BOLAS CON EL CORTACESPED
 }
 

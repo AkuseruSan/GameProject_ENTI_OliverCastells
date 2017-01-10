@@ -12,7 +12,7 @@ private:
 
 public:
 	Grid() = default;
-	Grid(rapidxml::xml_document<>&);
+	Grid(int);
 
 	int GetSize();
 	GameObject* GetObjectFromGrid(int i, int j);

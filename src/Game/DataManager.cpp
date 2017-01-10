@@ -32,11 +32,28 @@ void DataManager::ClearData()
 	data.clear();
 }
 
-rapidxml::xml_document<>& DataManager::GetData()
+rapidxml::xml_document<>& DataManager::GetDataRoot()
 {
 	if (data.first_node() == 0) throw "No loaded data!";
 	else return data;
 
+}
+
+rapidxml::xml_node<>* DataManager::GetDifficultyData(int d)
+{
+	if (d == 0)
+	{
+		return GetDataRoot().first_node("GameData")->first_node("Difficulty")->first_node("Easy");
+	}
+	else if (d == 1)
+	{
+		return GetDataRoot().first_node("GameData")->first_node("Difficulty")->first_node("Medium");
+	}
+	else if (d == 2)
+	{
+		return GetDataRoot().first_node("GameData")->first_node("Difficulty")->first_node("Hard");
+	}
+	else throw "THAT DIFFICULTY LEVEL DOESN'T EXIST";
 }
 
 DataManager::DataManager()

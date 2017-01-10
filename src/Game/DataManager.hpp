@@ -21,7 +21,8 @@ public:
 
 	void ClearData();
 
-	rapidxml::xml_document<>& GetData();
+	rapidxml::xml_document<>& GetDataRoot();
+	rapidxml::xml_node<>* GetDifficultyData(int);
 
 private:
 	DataManager();

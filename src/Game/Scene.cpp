@@ -1,9 +1,8 @@
 #include "Scene.hpp"
 
-Scene::Scene(rapidxml::xml_document<>& data)
+Scene::Scene(int diff)
 {
-	std::cout << data.name() << std::endl;
-	grid = Grid(data);
+	grid = Grid(diff);
 }
 
 void Scene::Update()

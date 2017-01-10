@@ -12,10 +12,10 @@ Scene* SceneManager::GetCurentScene()
 	return currentScene;
 }
 
-void SceneManager::InitScene(rapidxml::xml_document<>& data)
+void SceneManager::InitScene(int d)
 {
 
-	s_mainMenu = new Scene(data);
+	s_mainMenu = new Scene(d);
 	currentScene = s_mainMenu;
 }
 

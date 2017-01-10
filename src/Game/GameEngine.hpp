@@ -33,7 +33,7 @@ public:
 	~GameEngine();
 
 	PlayerController& GetPlayerController();
-
+	void ResetPlayerController();
 	void Init();
 
 	void GameLoop();

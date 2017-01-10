@@ -12,7 +12,7 @@ public:
 	static SceneManager& GetInstance();
 
 	Scene* GetCurentScene();
-	void InitScene(rapidxml::xml_document<>& data);
+	void InitScene(int d);
 
 	void Update();
 	void Draw();
