@@ -21,6 +21,7 @@ Grid::Grid(rapidxml::xml_document<>& data)
 
 int Grid::GetSize()
 {
+
 	return size;
 }
 GameObject* Grid::GetObjectFromGrid(int i, int j)

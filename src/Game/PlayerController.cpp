@@ -19,12 +19,16 @@ void PlayerController::Update()
 
 void PlayerController::InitSnake()
 {
+	score = 0;
+	eateApples = 0;
 	lives = INITIAL_LIVES;
 	rotation = 0;
 	collider = GameObjectType::NONE;
-	int center = 10;//SM.GetCurentScene()->GetGrid()->GetSize() / 2;
+	apple = nullptr;
+	int center = SM.GetCurentScene()->GetGrid()->GetSize() / 2;
 	for (int i = 0; i < 3; i++)
 		body.push_back(Vector{ center, center });
+	GenerateApple();
 }
 
 void PlayerController::Die()
@@ -46,13 +50,19 @@ void PlayerController::Die()
 	collider = NONE;
 }
 
+void PlayerController::GenerateApple() {
+	Vector aPos{ (int)rand() % SM.GetCurentScene()->GetGrid()->GetSize() , (int)rand() % SM.GetCurentScene()->GetGrid()->GetSize() };
+}
+
 void PlayerController::CheckCollision() {
 	switch (collider)
 	{
-	case NONE:
-		break;
-	case APPLE:
-		break;
+	case NONE:			break;
+	case APPLE: {
+		eateApples++;
+		score += (eateApples * SCORE_UP);
+		GenerateApple();
+	}	break;
 	default:	Die();	break;
 	}
 }

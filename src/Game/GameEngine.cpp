@@ -4,7 +4,6 @@ using namespace std::string_literals;
 
 GameEngine::GameEngine()
 {
-	pc = new PlayerController();
 }
 
 
@@ -43,6 +42,7 @@ void GameEngine::Init()
 
 	//Scene Manager
 	SM.InitScene(DM.GetData());
+	pc = new PlayerController(); // AXEL, TE ATREVES A MOVER ESTO Y TE DEPILO LAS BOLAS CON EL CORTACESPED
 }
 
 void GameEngine::GameLoop() {

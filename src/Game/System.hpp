@@ -10,6 +10,7 @@
 #define INITIAL_SPEED 1
 #define INITIAL_FOOD 3
 #define ICREMENT_FOOD 1
+#define SCORE_UP 100
 
 #define ATLAS_WIDTH 3
 #define ATLAS_HEIGHT 2

@@ -14,10 +14,13 @@ class PlayerController
 {
 private:
 	GameObject* controlledObject;
+	GameObject* apple;
 	std::deque<Vector> body;
 	GameObjectType collider;
 	int rotation;
 	int lives;
+	long int score;
+	int eateApples;
 
 public:
 	PlayerController();
@@ -29,4 +32,5 @@ public:
 	void Die();
 	void Move();
 	void CheckCollision();
+	void GenerateApple();
 };
