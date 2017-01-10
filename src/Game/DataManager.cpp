@@ -41,21 +41,17 @@ rapidxml::xml_document<>& DataManager::GetDataRoot()
 
 rapidxml::xml_node<>* DataManager::GetDifficultyData(int d)
 {
-	if (d == 1)
+	if (d == 0)
 	{
 		return GetDataRoot().first_node("GameData")->first_node("Scene")->first_node("Easy");
 	}
-	else if (d == 2)
+	else if (d == 1)
 	{
 		return GetDataRoot().first_node("GameData")->first_node("Scene")->first_node("Medium");
 	}
-	else if (d == 3)
+	else if (d == 2)
 	{
 		return GetDataRoot().first_node("GameData")->first_node("Scene")->first_node("Hard");
-	}
-	else if (d == 0)
-	{
-		return GetDataRoot().first_node("GameData")->first_node("Scene")->first_node("MainMenu");
 	}
 	else throw "THAT DIFFICULTY LEVEL DOESN'T EXIST";
 }

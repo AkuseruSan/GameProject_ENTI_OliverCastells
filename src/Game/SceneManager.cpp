@@ -27,7 +27,7 @@ void SceneManager::Update()
 			if (IM.GetDirction() == DIR_UP)
 			{
 				DM.SetState(GameState::GAME);
-				InitScene(1);
+				InitScene(0);
 			}
 		}break;
 		case GameState::GAME:
@@ -37,7 +37,6 @@ void SceneManager::Update()
 		}break;
 		case GameState::GAME_OVER:
 		{
-			InitScene(0);
 			DM.SetState(GameState::MAIN_MENU);
 			ResetPlayerController();
 		}break;
@@ -50,7 +49,6 @@ void SceneManager::Draw()
 	{
 		case GameState::MAIN_MENU:
 		{
-			R.RenderText("Pacote", SDL_Color{255, 100, 200, 50}, SDL_Rect{ 0,0,100,100 });
 			mainMenu->Draw();
 		}break;
 		case GameState::GAME:
