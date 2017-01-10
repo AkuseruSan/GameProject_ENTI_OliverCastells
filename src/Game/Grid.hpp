@@ -10,11 +10,14 @@ private:
 	int size;
 	GameObject** gameObjectsGrid;
 
+	void GenerateObstacles();
+
 public:
 	Grid() = default;
 	Grid(int);
 
 	int GetSize();
+	void GenerateApple();
 	GameObject* GetObjectFromGrid(int i, int j);
 
 	void Update();
