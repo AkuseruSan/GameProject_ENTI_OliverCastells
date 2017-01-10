@@ -35,7 +35,6 @@ void GameEngine::Init()
 	//Sprites
 	R.LoadTexture(ATLAS_TEXTURE.key, ATLAS_TEXTURE.path);
 
-	//Scene Manager
 }
 
 void GameEngine::GameLoop() {

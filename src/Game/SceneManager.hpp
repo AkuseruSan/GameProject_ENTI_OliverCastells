@@ -4,6 +4,7 @@
 #include "XML\rapidxml_iterators.hpp"
 #include "DataManager.hpp"
 #include "PlayerController.hpp"
+#include "MainMenu.hpp"
 
 #define SM SceneManager::GetInstance()
 
@@ -30,6 +31,8 @@ private:
 	SceneManager& operator=(const SceneManager&);
 
 	std::map<int, Scene*> scenes;
+
+	MainMenu* mainMenu;
 	Scene* currentScene;
 };
 

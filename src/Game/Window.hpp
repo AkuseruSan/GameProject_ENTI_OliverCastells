@@ -15,6 +15,7 @@ public:
 	}
 	~Window();
 
+	SDL_Surface* GetSurface();
 	SDL_Window* GetWindow();
 
 private:

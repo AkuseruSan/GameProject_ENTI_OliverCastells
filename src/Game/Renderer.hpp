@@ -30,7 +30,11 @@ struct Texture
 
 class Renderer
 {
+private:
 	SDL_Renderer *myRenderer;
+	TTF_Font* font;
+
+	SDL_Texture* GetTextAsTexture(char*, SDL_Color);
 public:
 	inline static Renderer& Instance()
 	{
@@ -38,12 +42,13 @@ public:
 		return myRenderer;
 	}
 
+	TTF_Font* GetFont();
+
 	SDL_Renderer* GetRenderer();
 	void Render(SDL_Texture* tex, SDL_Rect* sourceRect, SDL_Rect& destRect);
+	void RenderText(char* msg, SDL_Color col, SDL_Rect& destRect);
 
 	void Render(SDL_Texture* tex, SDL_Rect* sourceRect, SDL_Rect& destRect, int degrees);
-
-	void RenderText();
 
 	SDL_Rect* GetAtlasRegion(Vector position);
 

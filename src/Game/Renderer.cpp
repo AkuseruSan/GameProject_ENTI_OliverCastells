@@ -11,14 +11,19 @@ void Renderer::Render(SDL_Texture* tex, SDL_Rect* sourceRect, SDL_Rect& destRect
 	SDL_RenderCopy(myRenderer, tex, sourceRect, &destRect);
 }
 
+void Renderer::RenderText(char* msg, SDL_Color col, SDL_Rect& destRect)
+{
+	SDL_RenderCopy(myRenderer, GetTextAsTexture(msg, col), nullptr, &destRect);
+}
+
 void Renderer::Render(SDL_Texture* tex, SDL_Rect* sourceRect, SDL_Rect& destRect, int degrees)
 {
 	SDL_RenderCopyEx(myRenderer, tex, sourceRect, &destRect, degrees, nullptr, SDL_FLIP_NONE);
 }
 
-void Renderer::RenderText()
+TTF_Font* Renderer::GetFont()
 {
-
+	return font;
 }
 
 SDL_Rect* Renderer::GetAtlasRegion(Vector position)
@@ -36,6 +41,14 @@ void Renderer::LoadTexture(std::string name, const char* path)
 	sprites.insert(aux);
 }
 
+SDL_Texture* Renderer::GetTextAsTexture(char* text, SDL_Color col)
+{
+	SDL_Surface* sur{ TTF_RenderText_Blended(font, text, col) };
+	SDL_Texture* tex{ SDL_CreateTextureFromSurface(RR, sur) };
+	
+	return tex;
+}
+
 SDL_Texture* Renderer::GetTexture(std::string key)
 {
 	if (sprites[key] == nullptr) throw "No texture stored with that key value!";
@@ -44,7 +57,7 @@ SDL_Texture* Renderer::GetTexture(std::string key)
 
 
 Renderer::Renderer() {
+	font = { TTF_OpenFont("../../res/fnt/arial.ttf", 50) };
 	myRenderer = SDL_CreateRenderer(WW, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 }
-std::map<std::string, SDL_Texture*> sprites;
 
