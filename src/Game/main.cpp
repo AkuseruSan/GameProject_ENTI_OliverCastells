@@ -13,29 +13,14 @@ int main(int, char*[]) {
 	try {
 		// --- INIT ---
 
-		GE.Run();
+		GE.Run();//Función de ejecución principal del juego.
 
-
-		//SDL_Texture *playerTexture{ IMG_LoadTexture(RR, "../../res/gfx/blue.png") };
-		//if (bgTexture == nullptr || playerTexture == nullptr) throw "Unable to create the SDL textures for the sprites"s;
-
-		//SDL_Rect playerRect{ (SCREEN_WIDTH >> 1) - 50, (SCREEN_HEIGHT >> 1) - 50, 100, 100 };
-		//SDL_Rect playerTarget{ 0, 0, 100, 100 };
-
-		//SDL_QueryTexture(texturePlayer, nullptr, nullptr, &rectSrc.w, &rectSrc.h);
-		//rectSrc.w >>= 1, rectSrc.h >>= 1;
-		
-		// --- TEXT ---
-
-		// --- DESTROY ---
 		Mix_CloseAudio();
-		//SDL_DestroyTexture(bgTexture);
-		//SDL_DestroyTexture(textTexture);
-		//SDL_DestroyTexture(playerTexture);
+
 		SDL_DestroyRenderer(RR);
 		SDL_DestroyWindow(WW);
 	}
-	catch (const std::string &msg) { // Catch exceptions and print them as an error msg box
+	catch (const std::string &msg) {
 		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "ERROR", ("Description: " + msg + "\nSDL Error:" + SDL_GetError()).c_str(), nullptr);
 	}
 	// --- EXIT ---

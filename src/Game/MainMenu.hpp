@@ -5,13 +5,18 @@
 #include "Window.hpp"
 #include "Renderer.hpp"
 #include "InputManager.hpp"
+#include "Button.hpp"
 
 class MainMenu
 {
 private:
-	SDL_Color textCol{ 255, 100, 100, 100 };
+
+
 public:
+	Button easyButton;
+	Button mediumButton;
+	Button hardButton;
 	MainMenu();
-	void Update();
+
 	void Draw();
 };

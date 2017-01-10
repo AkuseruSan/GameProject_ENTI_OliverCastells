@@ -24,6 +24,7 @@ public:
 
 	void Update(bool& isRun);
 
+	bool MouseClicked();
 	Vector GetMousePosition();
 	inline int GetDirction(void)  const { return direction; }
 	inline void ResetDirection(void) { direction = NULL; }

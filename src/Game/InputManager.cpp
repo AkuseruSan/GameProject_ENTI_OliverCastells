@@ -34,3 +34,8 @@ Vector InputManager::GetMousePosition()
 {
 	return mousePos;
 }
+
+bool InputManager::MouseClicked()
+{
+	return click;
+}

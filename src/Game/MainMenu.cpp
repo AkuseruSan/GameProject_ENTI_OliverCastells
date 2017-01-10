@@ -2,17 +2,14 @@
 
 MainMenu::MainMenu()
 {
-
-}
-
-void MainMenu::Update()
-{
-	
+	easyButton = Button(SDL_Rect{ (SCREEN_WIDTH / 2) - 50, 50 ,100, 100 }, "Easy");
+	mediumButton = Button(SDL_Rect{ (SCREEN_WIDTH / 2) - 50, SCREEN_HEIGHT / 2 - 50, 100, 100 }, "Medium");
+	hardButton = Button(SDL_Rect{ (SCREEN_WIDTH / 2) - 50, SCREEN_HEIGHT - 200, 100, 100 }, "Hard");
 }
 
 void MainMenu::Draw()
 {
-	R.RenderText("Easy", textCol, SDL_Rect{ (SCREEN_WIDTH/2) - 50, 50 ,100, 100 });
-	R.RenderText("Medium", textCol, SDL_Rect{ (SCREEN_WIDTH / 2) - 50, SCREEN_HEIGHT/2 - 50, 100, 100 });
-	R.RenderText("Hard", textCol, SDL_Rect{ (SCREEN_WIDTH / 2) - 50, SCREEN_HEIGHT - 200, 100, 100 });
+	easyButton.Draw();
+	mediumButton.Draw();
+	hardButton.Draw();
 }

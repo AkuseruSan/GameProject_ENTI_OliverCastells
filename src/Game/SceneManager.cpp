@@ -21,8 +21,21 @@ void SceneManager::Update()
 	{
 		case GameState::MAIN_MENU:
 		{
-			
-			mainMenu->Update();
+			if (mainMenu->easyButton.Clicked())
+			{
+				DM.SetState(GameState::GAME);
+				SM.InitScene(0);
+			}
+			else if (mainMenu->mediumButton.Clicked()) 
+			{ 
+				DM.SetState(GameState::GAME);
+				SM.InitScene(1); 
+			}
+			else if (mainMenu->hardButton.Clicked()) 
+			{ 
+				DM.SetState(GameState::GAME);
+				SM.InitScene(2); 
+			}
 			
 			if (IM.GetDirction() == DIR_UP)
 			{
@@ -70,6 +83,12 @@ SceneManager::SceneManager()
 	mainMenu = new MainMenu();
 	InitScene(0);
 	ResetPlayerController();
+}
+
+SceneManager::~SceneManager()
+{
+	delete(mainMenu);
+	delete(currentScene);
 }
 
 void SceneManager::ResetPlayerController()

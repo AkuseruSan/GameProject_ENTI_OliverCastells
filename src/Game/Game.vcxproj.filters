@@ -52,6 +52,9 @@
     <ClCompile Include="MainMenu.cpp">
       <Filter>Model</Filter>
     </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renderer.hpp">
@@ -91,6 +94,9 @@
       <Filter>Controller</Filter>
     </ClInclude>
     <ClInclude Include="MainMenu.hpp">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.hpp">
       <Filter>Model</Filter>
     </ClInclude>
   </ItemGroup>
