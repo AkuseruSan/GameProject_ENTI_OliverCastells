@@ -7,6 +7,7 @@
 #include <deque>
 #include <math.h>
 #include "InputManager.hpp"
+#include "TimeManager.hh"
 
 #define INITIAL_LIVES 3
 
@@ -19,8 +20,9 @@ private:
 	GameObjectType collider;
 	int rotation;
 	int lives;
+	int speed;
 	long int score;
-	int eateApples;
+	int eatenApples;
 
 public:
 	PlayerController();

@@ -20,9 +20,10 @@ void PlayerController::Update()
 void PlayerController::InitSnake()
 {
 	score = 0;
-	eateApples = 0;
+	eatenApples = 0;
 	lives = INITIAL_LIVES;
 	rotation = 0;
+	speed = INITIAL_SPEED;
 	collider = GameObjectType::NONE;
 	apple = nullptr;
 	int center = SM.GetCurentScene()->GetGrid()->GetSize() / 2;
@@ -48,6 +49,8 @@ void PlayerController::Die()
 	}
 	if(collider == BLOCK) controlledObject->SetType(BLOCK);
 	collider = NONE;
+	eatenApples = 0;
+	speed = INITIAL_SPEED;
 }
 
 void PlayerController::GenerateApple() {
@@ -62,8 +65,9 @@ void PlayerController::CheckCollision() {
 	{
 	case NONE:			break;
 	case APPLE: {
-		eateApples++;
-		score += (eateApples * SCORE_UP);
+		eatenApples++;
+		//score += (eatenApples * SCORE_UP);
+		speed += score / 1000;
 		GenerateApple();
 		body.push_back(body.back());
 	}	break;
@@ -75,13 +79,13 @@ void PlayerController::Move()
 {
 	Vector pos = body.front();
 	controlledObject->SetType(GameObjectType::SNAKE);
-
+	
 	switch (IM.GetDirction())
 	{
-	case DIR_UP:	if (pos.y != 0) {pos.y -= 1;rotation = 0;}	break;
-	case DIR_DOWN:	if (pos.y != SM.GetCurentScene()->GetGrid()->GetSize() - 1) {pos.y += 1;rotation = 180;}break;
-	case DIR_LEFT:	if (pos.x != 0) {pos.x -= 1;rotation = 270;}break;
-	case DIR_RIGHT:	if (pos.x < SM.GetCurentScene()->GetGrid()->GetSize() - 1) {pos.x += 1;	rotation = 90;}	break;
+	case DIR_UP:	if (pos.y != 0) {pos.y -= speed; rotation = 0;}	break;
+	case DIR_DOWN:	if (pos.y != SM.GetCurentScene()->GetGrid()->GetSize() - 1) {pos.y += speed; rotation = 180;}break;
+	case DIR_LEFT:	if (pos.x != 0) {pos.x -= speed; rotation = 270;}break;
+	case DIR_RIGHT:	if (pos.x < SM.GetCurentScene()->GetGrid()->GetSize() - 1) {pos.x += speed;	rotation = 90;}	break;
 	}
 	
 	if(IM.GetDirction() != NULL)

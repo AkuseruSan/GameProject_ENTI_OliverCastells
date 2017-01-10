@@ -1,7 +1,9 @@
 #pragma once
 #include <SDL/SDL.h>
 #include <functional>
-#include "System.hpp"
+
+#define SCREEN_FPS 120.0f
+#define SCREEN_TICKS_PER_FRAME (1000.0f / SCREEN_FPS)
 
 #define TM TimeManager::Instance()
 
@@ -12,21 +14,22 @@ public:
 		return timeManager;
 	}
 	void FPSBegin() {
-		deltaTime = float(SDL_GetTicks() - lastTime);
+		m_deltatime = float(SDL_GetTicks() - lastTime);
 		lastTime = SDL_GetTicks();
 	}
 	void FPSEnd(std::function<void()> drawFunction) {
 		if (renderTime >= SCREEN_TICKS_PER_FRAME) drawFunction(), renderTime -= SCREEN_TICKS_PER_FRAME;
-		renderTime += deltaTime; // Updates the render timer
+		renderTime += m_deltatime; // Updates the render timer
 	}
-	Uint32 GetCurTime() { return SDL_GetTicks(); };
-	inline float GetDeltaTime() { return deltaTime; };
+	Uint32 GetCurMilis() { return SDL_GetTicks(); };
+	Uint32 GetCurSecs() { return SDL_GetTicks() / 1000; };
+	inline float GetDeltaTime() { return m_deltatime; };
 private:
 	TimeManager() = default;
 	TimeManager(const TimeManager &rhs) = delete;
 	TimeManager &operator=(const TimeManager &rhs) = delete;
 private:
-	float deltaTime{ .0f }; // Delta time in seconds
+	float m_deltatime{ .0f }; // Delta time in seconds
 	Uint32 lastTime{ SDL_GetTicks() }; // Last time sample in seconds
 	float renderTime{ 0.0f }; // Time control for rendering
 };
