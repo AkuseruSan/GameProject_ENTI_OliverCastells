@@ -27,6 +27,7 @@ Vector GameObject::GetPosition() { return position; }
 void GameObject::SetType(GameObjectType t) { type = t; }
 void GameObject::SetDefaultType() { type = NONE; rotation = 0; }
 void GameObject::SetRotation(int r) { rotation = r; }
+GameObjectType GameObject::GetType() { return type; }
 
 void GameObject::Draw()
 {

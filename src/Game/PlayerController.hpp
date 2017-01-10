@@ -8,13 +8,16 @@
 #include <math.h>
 #include "InputManager.hpp"
 
+#define INITIAL_LIVES 3
 
 class PlayerController
 {
 private:
 	GameObject* controlledObject;
 	std::deque<Vector> body;
+	GameObjectType collider;
 	int rotation;
+	int lives;
 
 public:
 	PlayerController();
@@ -24,6 +27,6 @@ public:
 	void Update();
 
 	void Die();
-
 	void Move();
+	void CheckCollision();
 };

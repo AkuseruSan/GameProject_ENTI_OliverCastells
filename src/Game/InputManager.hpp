@@ -23,7 +23,7 @@ public:
 	void Update(bool& isRun);
 
 	inline int GetDirction(void)  const { return direction; }
-	inline int ResetDirection(void) { direction = NULL; }
+	inline void ResetDirection(void) { direction = NULL; }
 private:
 	int direction = NULL;
 };

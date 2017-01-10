@@ -29,6 +29,8 @@ public:
 	virtual void Draw();
 	virtual void Update();
 
+	GameObjectType GetType();
+	
 	void SetBounds();
 	void SetType(GameObjectType type);
 	void SetDefaultType();

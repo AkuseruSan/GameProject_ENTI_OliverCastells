@@ -14,25 +14,51 @@ void PlayerController::Update()
 	controlledObject = SM.GetCurentScene()->GetGrid()->GetObjectFromGrid(body.front().x, body.front().y);
 
 	Move();
+	CheckCollision();
 }
 
 void PlayerController::InitSnake()
 {
+	lives = INITIAL_LIVES;
 	rotation = 0;
-	for (int i = 0; i < 5; i++)
-	{
-		body.push_back(Vector{ 10,10 });
-	}
+	collider = GameObjectType::NONE;
+	int center = 10;//SM.GetCurentScene()->GetGrid()->GetSize() / 2;
+	for (int i = 0; i < 3; i++)
+		body.push_back(Vector{ center, center });
 }
 
 void PlayerController::Die()
 {
+	IM.ResetDirection();
+	if (lives > 1) {
+		lives--;
+		for each (Vector v in body)
+			SM.GetCurentScene()->GetGrid()->GetObjectFromGrid(v.x, v.y)->SetDefaultType();
+		body.clear();
+		int center =  SM.GetCurentScene()->GetGrid()->GetSize() / 2;
+		for (int i = 0; i < 3; i++)
+			body.push_back(Vector{ center, center });
+	}
+	else {
 
+	}
+	if(collider == BLOCK) controlledObject->SetType(BLOCK);
+	collider = NONE;
+}
+
+void PlayerController::CheckCollision() {
+	switch (collider)
+	{
+	case NONE:
+		break;
+	case APPLE:
+		break;
+	default:	Die();	break;
+	}
 }
 
 void PlayerController::Move()
 {
-	//Vector dirVec;
 	Vector pos = body.front();
 	controlledObject->SetType(GameObjectType::SNAKE);
 
@@ -43,6 +69,9 @@ void PlayerController::Move()
 	case DIR_LEFT:	if (pos.x != 0) {pos.x -= 1;rotation = 270;}break;
 	case DIR_RIGHT:	if (pos.x < SM.GetCurentScene()->GetGrid()->GetSize() - 1) {pos.x += 1;	rotation = 90;}	break;
 	}
+	
+	if(IM.GetDirction() != NULL)
+		collider = SM.GetCurentScene()->GetGrid()->GetObjectFromGrid(pos.x, pos.y)->GetType();
 
 	body.push_front(pos);
 	controlledObject = SM.GetCurentScene()->GetGrid()->GetObjectFromGrid(body.back().x, body.back().y);

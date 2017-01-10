@@ -10,7 +10,7 @@ GameEngine::GameEngine()
 
 GameEngine::~GameEngine()
 {
-
+	delete (pc);
 }
 
 PlayerController& GameEngine::GetPlayerController()
@@ -52,7 +52,6 @@ void GameEngine::GameLoop() {
 
 		// HANDLE EVENTS
 		IM.Update(isRunning);
-		int aux = IM.GetDirction();
 
 		// UPDATE
 		Update();

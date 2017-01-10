@@ -3,6 +3,7 @@
 Grid::Grid(rapidxml::xml_document<>& data)
 {
 	size = std::stoi(data.first_node("GameData")->first_node("GameScenes")->first_node("GameScene")->first_attribute("grid_size")->value(), nullptr, 10);
+	size *= GRID_SIZE;
 
 	gameObjectsGrid = new GameObject*[size];
 
