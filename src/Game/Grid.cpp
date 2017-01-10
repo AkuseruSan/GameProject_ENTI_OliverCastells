@@ -40,7 +40,15 @@ void Grid::GenerateObstacles() {
 		Vector aPos{ (int)rand() % GetSize() , (int)rand() % GetSize() };
 		auto aux = GetObjectFromGrid(aPos.x, aPos.y);
 		if (aux->GetType() == NONE) aux->SetType(BLOCK);
+		obstacles.push_back(aPos);
 	}
+}
+
+void Grid::DeleteObstacles(){
+	for (auto it = obstacles.begin(); it != obstacles.end(); ++it) {
+		GetObjectFromGrid(it->x, it->y)->SetDefaultType();
+	}
+	obstacles.clear();
 }
 
 GameObject* Grid::GetObjectFromGrid(int i, int j)

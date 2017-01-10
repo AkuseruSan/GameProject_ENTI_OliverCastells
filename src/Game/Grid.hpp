@@ -9,8 +9,7 @@ class Grid
 private:
 	int size;
 	GameObject** gameObjectsGrid;
-
-	void GenerateObstacles();
+	std::list<Vector> obstacles;
 
 public:
 	Grid() = default;
@@ -18,6 +17,8 @@ public:
 
 	int GetSize();
 	void GenerateApple();
+	void GenerateObstacles();
+	void DeleteObstacles();
 	GameObject* GetObjectFromGrid(int i, int j);
 
 	void Update();
