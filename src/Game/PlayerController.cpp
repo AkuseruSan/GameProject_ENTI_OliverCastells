@@ -93,10 +93,10 @@ void PlayerController::Move()
 	
 	switch (IM.GetDirction())
 	{
-	case DIR_UP:	if (pos.y != 0) {pos.y -= speed; rotation = 0;}	break;
-	case DIR_DOWN:	if (pos.y != ownerScene->GetGrid()->GetSize() - 1) {pos.y += speed; rotation = 180;}break;
-	case DIR_LEFT:	if (pos.x != 0) {pos.x -= speed; rotation = 270;}break;
-	case DIR_RIGHT:	if (pos.x < ownerScene->GetGrid()->GetSize() - 1) {pos.x += speed;	rotation = 90;}	break;
+	case DIR_UP:	if (pos.y != 0) {pos.y -= 1; rotation = 0;}	break;
+	case DIR_DOWN:	if (pos.y != ownerScene->GetGrid()->GetSize() - 1) {pos.y += 1; rotation = 180;}break;
+	case DIR_LEFT:	if (pos.x != 0) {pos.x -= 1; rotation = 270;}break;
+	case DIR_RIGHT:	if (pos.x < ownerScene->GetGrid()->GetSize() - 1) {pos.x += 1;	rotation = 90;}	break;
 	}
 	
 	if(IM.GetDirction() != NULL)

@@ -4,7 +4,6 @@
 #include "Renderer.hpp"
 
 
-
 enum GameObjectType {NONE, BLOCK, APPLE, SNAKE, SNAKEEND, SNAKESTART};
 
 class GameObject
@@ -14,6 +13,7 @@ private:
 	int width, height;
 	int rotation;
 	Vector atlasSection;
+
 
 	SDL_Rect* bounds;
 	SDL_Texture* texture;
