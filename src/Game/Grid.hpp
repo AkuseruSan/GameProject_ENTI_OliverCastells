@@ -14,6 +14,7 @@ private:
 public:
 	Grid() = default;
 	Grid(int);
+	~Grid();
 
 	int GetSize();
 	void GenerateApple();

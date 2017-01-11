@@ -9,6 +9,7 @@ class Scene
 public:
 	Scene() = default;
 	Scene(int);
+	~Scene();
 
 	Grid* GetGrid()
 	{

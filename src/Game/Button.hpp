@@ -11,6 +11,7 @@ private:
 public:
 	Button() = default;
 	Button(SDL_Rect, char*);
+	~Button();
 	bool Clicked();
 
 	void Draw();

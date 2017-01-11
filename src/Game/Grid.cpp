@@ -21,6 +21,11 @@ Grid::Grid(int diff)
 	GenerateObstacles();
 }
 
+Grid::~Grid()
+{
+	// delete(gameObjectsGrid);
+}
+
 int Grid::GetSize()
 {
 

@@ -22,6 +22,7 @@ private:
 public:	
 	GameObject() = default;
 	GameObject(int, int, int, int, SDL_Texture*, int);
+	~GameObject();
 
 	void SetPosition(int, int);
 	Vector GetPosition();

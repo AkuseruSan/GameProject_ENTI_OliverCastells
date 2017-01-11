@@ -61,3 +61,12 @@ Renderer::Renderer() {
 	myRenderer = SDL_CreateRenderer(WW, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 }
 
+Renderer::~Renderer()
+{
+	for (auto it = sprites.begin(); it != sprites.end(); ++it)
+	{
+		SDL_DestroyTexture(it->second);
+		//delete(it->second);
+	}
+
+}

@@ -21,3 +21,8 @@ bool Button::Clicked()
 
 	else return false;
 }
+
+Button::~Button()
+{
+	
+}

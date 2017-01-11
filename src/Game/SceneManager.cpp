@@ -50,8 +50,12 @@ void SceneManager::Update()
 		}break;
 		case GameState::GAME_OVER:
 		{
-			DM.SetState(GameState::MAIN_MENU);
-			ResetPlayerController();
+			if (IM.MouseClicked())
+			{
+				DM.SetState(GameState::MAIN_MENU);
+				ResetPlayerController();
+			}
+
 		}break;
 	}
 }
@@ -67,9 +71,15 @@ void SceneManager::Draw()
 		case GameState::GAME:
 		{
 			GetCurrentScene()->Draw();
+			R.RenderText((char*)std::string("Lives: " + std::to_string(playerController->lives)).c_str(), SDL_Color{ 255,255,60,45 }, SDL_Rect{ 20, 20, 50, 20 });
+
 		}break;
 		case GameState::GAME_OVER:
 		{
+			GetCurrentScene()->Draw();
+			R.RenderText("[CLICK TO GO TO MAIN MENU]", SDL_Color{ 255,255,60,45 }, SDL_Rect{ SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4, 200, 20 });
+			R.RenderText((char*)std::string("Score: "+ std::to_string(playerController->score)).c_str(), SDL_Color{ 255,255,60,45 }, SDL_Rect{ SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2, 100, 20 });
+			R.RenderText((char*)std::string("Level: " + std::to_string(playerController->level)).c_str(), SDL_Color{ 255,255,60,45 }, SDL_Rect{ SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 + 50, 100, 20 });
 
 		}break;
 	}
@@ -89,6 +99,7 @@ SceneManager::~SceneManager()
 {
 	delete(mainMenu);
 	delete(currentScene);
+	//delete(playerController);
 }
 
 void SceneManager::ResetPlayerController()

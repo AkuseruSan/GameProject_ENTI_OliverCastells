@@ -11,10 +11,12 @@ int main(int, char*[]) {
 	using namespace std::string_literals; // Enables to use an array of characters with an "s" at the end as an string literal
 	srand(time(NULL));
 	try {
-		// --- INIT ---
+		// --- INIT & RUN ---
 
 		GE.Run();//Función de ejecución principal del juego.
 
+
+		// --- DESTROY ---
 		Mix_CloseAudio();
 
 		SDL_DestroyRenderer(RR);

@@ -99,6 +99,9 @@
     <ClInclude Include="Button.hpp">
       <Filter>Model</Filter>
     </ClInclude>
+    <ClInclude Include="TimeManager.hpp">
+      <Filter>Controller</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="GameData.xml">

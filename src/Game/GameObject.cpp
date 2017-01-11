@@ -51,3 +51,8 @@ void GameObject::SetBounds()
 {
 	bounds = new SDL_Rect{ position.x, position.y, width, height };
 }
+
+GameObject::~GameObject()
+{
+
+}

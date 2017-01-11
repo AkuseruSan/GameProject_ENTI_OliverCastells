@@ -141,6 +141,7 @@
     <ClInclude Include="Scene.hpp" />
     <ClInclude Include="SceneManager.hpp" />
     <ClInclude Include="System.hpp" />
+    <ClInclude Include="TimeManager.hpp" />
     <ClInclude Include="Vector.hpp" />
     <ClInclude Include="Window.hpp" />
   </ItemGroup>

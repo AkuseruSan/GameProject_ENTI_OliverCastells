@@ -9,6 +9,7 @@ PlayerController::~PlayerController()
 {
 	delete(apple);
 	delete(controlledObject);
+	delete(ownerScene);
 }
 
 void PlayerController::Update()

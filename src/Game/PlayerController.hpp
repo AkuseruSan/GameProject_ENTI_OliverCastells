@@ -7,7 +7,7 @@
 #include <deque>
 #include <math.h>
 #include "InputManager.hpp"
-#include "TimeManager.hh"
+#include "TimeManager.hpp"
 
 #define INITIAL_LIVES 3
 
@@ -22,12 +22,12 @@ private:
 	std::deque<Vector> body;
 	GameObjectType collider;
 	int rotation;
-	int lives;
+
 	int speed;
-	long int score;
+
 	int eatenApples;
 	int foodInc;
-	int level;
+
 
 	void Die();
 	void Move();
@@ -41,4 +41,7 @@ public:
 
 	void Update();
 
+	long int score;
+	int level;
+	int lives;
 };

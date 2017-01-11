@@ -33,6 +33,7 @@ class Renderer
 private:
 	SDL_Renderer *myRenderer;
 	TTF_Font* font;
+	Renderer();
 
 	SDL_Texture* GetTextAsTexture(char*, SDL_Color);
 public:
@@ -42,6 +43,7 @@ public:
 		return myRenderer;
 	}
 
+	~Renderer();
 	TTF_Font* GetFont();
 
 	SDL_Renderer* GetRenderer();
@@ -56,7 +58,7 @@ public:
 
 	SDL_Texture* GetTexture(std::string key);
 
-	Renderer();
+
 	std::map<std::string, SDL_Texture*> sprites;
 
 	Renderer(const Renderer&) = delete;
