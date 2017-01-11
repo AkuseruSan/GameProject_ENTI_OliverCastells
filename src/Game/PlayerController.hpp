@@ -7,7 +7,6 @@
 #include <deque>
 #include <math.h>
 #include "InputManager.hpp"
-#include "TimeManager.hpp"
 
 #define INITIAL_LIVES 3
 
