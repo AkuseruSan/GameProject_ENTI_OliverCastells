@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Model">
+      <UniqueIdentifier>{cd4df34c-8859-43a3-a8ce-8f542d4fae95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View">
+      <UniqueIdentifier>{fc30f223-c7d0-4ad5-a07d-d5b99b557c9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controller">
+      <UniqueIdentifier>{b780536b-1767-4432-8993-9cc580f3cdb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools">
+      <UniqueIdentifier>{d34f11bf-c319-44e6-899e-1e554f740029}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Saves&amp;Configs">
+      <UniqueIdentifier>{111652ba-75b7-404c-b2b4-d418f0bb085f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="DataManager.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerController.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Renderer.hpp">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.hpp">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="System.hpp">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.hpp">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.hpp">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.hpp">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.hpp">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerController.hpp">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.hpp">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine.hpp">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="DataManager.hpp">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.hpp">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.hpp">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.hpp">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.hpp">
+      <Filter>Controller</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="GameData.xml">
+      <Filter>Saves&amp;Configs</Filter>
+    </Xml>
+  </ItemGroup>
+</Project>
