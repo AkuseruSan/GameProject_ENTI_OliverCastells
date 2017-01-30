@@ -13,6 +13,8 @@
 class PlayerController
 {
 private:
+	float speedTimer;
+
 	GameObject* controlledObject;
 	GameObject* apple;
 
