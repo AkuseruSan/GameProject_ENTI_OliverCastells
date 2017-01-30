@@ -22,6 +22,8 @@ public:
 	void Update();
 	void Draw();
 
+	float lvlCounter;
+	float lvlTime;
 private:
 
 	Grid grid;
@@ -33,7 +35,4 @@ private:
 	void DrawSlider();
 
 	int difficulty;
-
-	float lvlCounter;
-	float lvlTime;
 };

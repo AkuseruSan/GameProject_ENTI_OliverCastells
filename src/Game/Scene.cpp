@@ -18,11 +18,6 @@ void Scene::Update()
 	UpdateSlider();
 
 	lvlCounter -= TM.GetDeltaTime();
-	if (lvlCounter <= 0)
-	{
-		lvlCounter = lvlTime;
-		
-	}
 	/*std::cout << lvlCounter << std::endl;*/
 }
 

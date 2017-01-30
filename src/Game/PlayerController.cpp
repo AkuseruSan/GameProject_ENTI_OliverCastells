@@ -18,6 +18,12 @@ void PlayerController::Update()
 
 	Move();
 	CheckCollision();
+
+	if (ownerScene->lvlCounter <= 0)
+	{
+		ownerScene->lvlCounter = ownerScene->lvlTime;
+		Die();
+	}
 }
 
 void PlayerController::InitSnake()
