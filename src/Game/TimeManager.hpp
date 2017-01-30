@@ -26,7 +26,7 @@ public:
 		}
 	}
 	inline Uint64 GetCurTime() { return SDL_GetPerformanceCounter(); };
-	inline float GetDeltaTime() { return m_deltatime; };
+	inline float GetDeltaTime() { return TICKS_PER_FRAME; };
 private:
 	TimeManager() = default;
 	TimeManager(const TimeManager &rhs) = delete;

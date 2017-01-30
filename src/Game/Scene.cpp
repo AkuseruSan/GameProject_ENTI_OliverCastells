@@ -7,10 +7,15 @@ Scene::Scene(int diff)
 	timeSlider = new SDL_Rect{ SCREEN_WIDTH/2 - SCREEN_WIDTH/8, SCREEN_HEIGHT/24, SCREEN_WIDTH/4, SCREEN_HEIGHT/50 };
 	backSlider = new SDL_Rect{ SCREEN_WIDTH / 2 - SCREEN_WIDTH / 8, SCREEN_HEIGHT / 24, SCREEN_WIDTH / 4, SCREEN_HEIGHT / 50 };
 
-	lvlTime = strtod(DM.GetDifficultyData(diff)->first_attribute("time")->value(), NULL);
+	lvlTime = strtod(DM.GetDifficultyData(diff)->first_attribute("time")->value(), NULL) * INITIAL_LEVEL_TIME;
 	lvlCounter = lvlTime;
 	
 	DM.SetRankingData(diff);
+}
+
+void Scene::ResetTimer() {
+	lvlTime = strtod(DM.GetDifficultyData(difficulty)->first_attribute("time")->value(), NULL) * INITIAL_LEVEL_TIME;
+	lvlCounter = lvlTime;
 }
 
 void Scene::Update() 

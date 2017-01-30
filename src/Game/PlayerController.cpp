@@ -47,6 +47,7 @@ void PlayerController::InitSnake()
 void PlayerController::Die()
 {
 	IM.ResetDirection();
+	ownerScene->ResetTimer();
 	//Pierde una vida y reinicia el nivel.
 	if (lives > 1) {
 		lives--;
@@ -74,6 +75,7 @@ void PlayerController::LevelUp() {
 	speed = strtod(DM.GetDifficultyData(ownerScene->GetDifficulty())->first_attribute("speed")->value(), NULL) * TM.GetDeltaTime();
 	ownerScene->GetGrid()->DeleteObstacles();
 	ownerScene->GetGrid()->GenerateObstacles();
+	ownerScene->ResetTimer();
 }
 
 void PlayerController::CheckCollision() {
@@ -83,7 +85,7 @@ void PlayerController::CheckCollision() {
 	case APPLE: {
 		eatenApples++;
 		score += (eatenApples * SCORE_UP);
-		speed -= score / 10000;
+		speed -= (score / 10000) * TM.GetDeltaTime();
 		body.push_back(body.back());
 		if (eatenApples >= INITIAL_FOOD * (std::stoi(DM.GetDifficultyData(ownerScene->GetDifficulty())->first_attribute("food")->value()), nullptr, 1) + foodInc)
 			LevelUp();

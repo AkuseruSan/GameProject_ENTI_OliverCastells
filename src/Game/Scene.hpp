@@ -19,6 +19,8 @@ public:
 
 	int GetDifficulty();
 
+	void ResetTimer();
+
 	void Update();
 	void Draw();
 
