@@ -110,6 +110,7 @@ void DataManager::InsertScore(PlayerData data) {
 
 DataManager::DataManager()
 {
+	//al iniciar se cogen los datos de guardado del ranking
 	ReadBinary(RANKING);
 }
 
