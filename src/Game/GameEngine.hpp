@@ -12,6 +12,7 @@
 #include "SceneManager.hpp"
 #include "DataManager.hpp"
 #include "InputManager.hpp"
+#include "TimeManager.hpp"
 
 #include <iostream>
 

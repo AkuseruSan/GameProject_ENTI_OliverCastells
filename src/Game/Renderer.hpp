@@ -4,6 +4,7 @@
 #include <map>
 #include "Vector.hpp"
 #include "Window.hpp"
+#include "TimeManager.hpp"
 
 #define R Renderer::Instance()//Game Engine Renderer
 #define RR Renderer::Instance().GetRenderer()//SDL Renderer
@@ -49,6 +50,8 @@ public:
 	SDL_Renderer* GetRenderer();
 	void Render(SDL_Texture* tex, SDL_Rect* sourceRect, SDL_Rect& destRect);
 	void RenderText(char* msg, SDL_Color col, SDL_Rect& destRect);
+
+	void RenderRect(SDL_Rect* r, SDL_Color col);
 
 	void Render(SDL_Texture* tex, SDL_Rect* sourceRect, SDL_Rect& destRect, int degrees);
 

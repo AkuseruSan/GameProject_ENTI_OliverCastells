@@ -38,19 +38,21 @@ void GameEngine::Init()
 }
 
 void GameEngine::GameLoop() {
-	SDL_Event evnt;
-	for (bool isRunning{ true }; isRunning;)
+	//SDL_Event evnt;
+	while (!IM.HasQuit())
 	{
+		TM.Update([&] {
+		
+			// HANDLE EVENTS
+			IM.Update();
 
-		// HANDLE EVENTS
-		IM.Update(isRunning);
+			// UPDATE
+			Update();
 
-		// UPDATE
-		Update();
-
-		// DRAW
-		Draw();
-
+			// DRAW
+			Draw();
+		
+		});
 	}
 }
 

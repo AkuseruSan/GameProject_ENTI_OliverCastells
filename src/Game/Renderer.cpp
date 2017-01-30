@@ -16,6 +16,14 @@ void Renderer::RenderText(char* msg, SDL_Color col, SDL_Rect& destRect)
 	SDL_RenderCopy(myRenderer, GetTextAsTexture(msg, col), nullptr, &destRect);
 }
 
+void Renderer::RenderRect(SDL_Rect* r, SDL_Color col)
+{
+	SDL_SetRenderDrawColor(myRenderer, col.r, col.g, col.b, col.a);
+	SDL_RenderFillRect(myRenderer, r);
+	SDL_SetRenderDrawColor(myRenderer, 0, 0, 0, 0);
+	
+}
+
 void Renderer::Render(SDL_Texture* tex, SDL_Rect* sourceRect, SDL_Rect& destRect, int degrees)
 {
 	SDL_RenderCopyEx(myRenderer, tex, sourceRect, &destRect, degrees, nullptr, SDL_FLIP_NONE);

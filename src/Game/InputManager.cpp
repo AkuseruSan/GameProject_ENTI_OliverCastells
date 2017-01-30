@@ -3,6 +3,7 @@
 
 InputManager::InputManager()
 {
+	gameExit = false;
 	click = false;
 }
 
@@ -11,11 +12,11 @@ InputManager::~InputManager()
 
 }
 
-void InputManager::Update(bool& isRun) {
+void InputManager::Update() {
 	SDL_Event evnt;
 	while (SDL_PollEvent(&evnt)) {
 		switch (evnt.type) {
-		case SDL_QUIT:		isRun = false;	break;
+		case SDL_QUIT:		gameExit = true;	break;
 		case SDL_MOUSEMOTION:	mousePos = { evnt.motion.x, evnt.motion.y };		break;
 		case SDL_MOUSEBUTTONDOWN: click = true; break;
 		case SDL_MOUSEBUTTONUP: click = false; break;
