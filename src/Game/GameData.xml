@@ -2,7 +2,7 @@
 <!--0 = VOID | 1 = BLOCK-->
 <GameData>
   <Scene>
-    <Easy grid_size="8" time ="4" speed="1" food ="1" food_increment="1"></Easy>
+    <Easy grid_size="8" time ="25" speed="1" food ="1" food_increment="1"></Easy>
     <Medium grid_size="6" time ="2" speed="2" food ="2" food_increment="2"></Medium>
     <Hard grid_size="4" time ="1" speed="3" food ="3" food_increment="4"></Hard>
   </Scene>

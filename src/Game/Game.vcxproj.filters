@@ -75,9 +75,6 @@
     <ClInclude Include="Grid.hpp">
       <Filter>Model</Filter>
     </ClInclude>
-    <ClInclude Include="Vector.hpp">
-      <Filter>Tools</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerController.hpp">
       <Filter>Model</Filter>
     </ClInclude>
@@ -101,6 +98,9 @@
     </ClInclude>
     <ClInclude Include="TimeManager.hpp">
       <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="AuxLib.hpp">
+      <Filter>Tools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

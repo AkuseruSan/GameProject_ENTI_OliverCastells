@@ -5,13 +5,25 @@ Scene::Scene(int diff)
 	grid = Grid(diff); 
 	difficulty = diff;
 	timeSlider = new SDL_Rect{ SCREEN_WIDTH/2 - SCREEN_WIDTH/8, SCREEN_HEIGHT/24, SCREEN_WIDTH/4, SCREEN_HEIGHT/50 };
-	backSlider = timeSlider;
+	backSlider = new SDL_Rect{ SCREEN_WIDTH / 2 - SCREEN_WIDTH / 8, SCREEN_HEIGHT / 24, SCREEN_WIDTH / 4, SCREEN_HEIGHT / 50 };
+
+	lvlTime = strtod(DM.GetDifficultyData(diff)->first_attribute("time")->value(), NULL);
+	lvlCounter = lvlTime;
+	
 }
 
 void Scene::Update() 
 { 
 	grid.Update();
 	UpdateSlider();
+
+	lvlCounter -= TM.GetDeltaTime();
+	if (lvlCounter <= 0)
+	{
+		lvlCounter = lvlTime;
+		
+	}
+	/*std::cout << lvlCounter << std::endl;*/
 }
 
 void Scene::Draw() 
@@ -24,13 +36,13 @@ int Scene::GetDifficulty() { return difficulty; }
 
 void Scene::UpdateSlider()
 {
-	//lvlCounter =
-		timeSlider->w -= TM.GetDeltaTime();
+	timeSlider->w = MAP_VALUE(lvlCounter, 0, lvlTime, 0, backSlider->w);
+
 }
 
 void Scene::DrawSlider()
 {
-	R.RenderRect(backSlider, SDL_Color{ 25,25,79,0 });
+	R.RenderRect(backSlider, SDL_Color{ 0,0,0,0 });
 	R.RenderRect(timeSlider, SDL_Color{ 255,255,255,0 });
 }
 

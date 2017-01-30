@@ -38,11 +38,10 @@ void GameEngine::Init()
 }
 
 void GameEngine::GameLoop() {
-	//SDL_Event evnt;
+
 	while (!IM.HasQuit())
 	{
 		TM.Update([&] {
-		
 			// HANDLE EVENTS
 			IM.Update();
 

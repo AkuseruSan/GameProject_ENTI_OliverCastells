@@ -3,7 +3,7 @@
 #include <SDL/SDL.h>
 #include <queue>
 #include "System.hpp"
-#include "Vector.hpp"
+#include "AuxLib.hpp"
 
 #define IM InputManager::Instance()
 
