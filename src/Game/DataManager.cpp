@@ -103,13 +103,23 @@ void DataManager::InsertScore(PlayerData data) {
 			}
 		}
 	}
-	WriteBinary(RANKING, ranking);
+	WriteBinary(ranking_data, ranking);
+}
+
+void DataManager::SetRankingData(int d) {
+	switch (d)
+	{
+	case 0:		ranking_data = EASY_RANKING;	break;
+	case 1:		ranking_data = MID_RANKING;		break;
+	case 2:		ranking_data = HARD_RANKING;	break;
+	default:	throw "THAT DIFFICULTY LEVEL DOESN'T EXIST";	break;
+	}
+	ReadBinary(ranking_data);
 }
 
 DataManager::DataManager()
 {
-	//al iniciar se cogen los datos de guardado del ranking
-	ReadBinary(RANKING);
+
 }
 
 GameState DataManager::GetState()

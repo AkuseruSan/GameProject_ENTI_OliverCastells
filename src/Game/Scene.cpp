@@ -10,6 +10,7 @@ Scene::Scene(int diff)
 	lvlTime = strtod(DM.GetDifficultyData(diff)->first_attribute("time")->value(), NULL);
 	lvlCounter = lvlTime;
 	
+	DM.SetRankingData(diff);
 }
 
 void Scene::Update() 

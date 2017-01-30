@@ -11,7 +11,10 @@
 
 #define DM DataManager::GetInstance()
 
-#define RANKING "../../res/data/Ranking.txt"
+#define EASY_RANKING "../../res/data/EasyRanking.txt"
+#define MID_RANKING "../../res/data/MediumRanking.txt"
+#define HARD_RANKING "../../res/data/HardRanking.txt"
+
 
 enum GameState { MAIN_MENU, GAME, GAME_OVER };
 
@@ -33,6 +36,7 @@ public:
 
 	void InsertScore(PlayerData);
 	PlayerData* GetRanking() { return ranking; }
+	void SetRankingData(int);
 	
 	rapidxml::xml_document<>& GetDataRoot();
 	rapidxml::xml_node<>* GetDifficultyData(int);
@@ -54,6 +58,8 @@ private:
 	void ReadBinary(std::string);
 	void WriteBinary(std::string, PlayerData*);
 	PlayerData ranking[10];
+
+	std::string ranking_data;
 
 	std::string content;
 	GameState state;
