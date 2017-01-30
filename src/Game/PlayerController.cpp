@@ -85,7 +85,7 @@ void PlayerController::CheckCollision() {
 	case APPLE: {
 		eatenApples++;
 		score += (eatenApples * SCORE_UP);
-		speed -= (score / 10000) * TM.GetDeltaTime();
+		speed -= (score / 5000);// * TM.GetDeltaTime();
 		body.push_back(body.back());
 		if (eatenApples >= INITIAL_FOOD * (std::stoi(DM.GetDifficultyData(ownerScene->GetDifficulty())->first_attribute("food")->value()), nullptr, 1) + foodInc)
 			LevelUp();
