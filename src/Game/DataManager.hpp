@@ -8,8 +8,11 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <map>
 
 #define DM DataManager::GetInstance()
+
+#define RANKING "../../res/data/Ranking.txt"
 
 enum GameState { MAIN_MENU, GAME, GAME_OVER };
 
@@ -29,8 +32,8 @@ public:
 
 	void ClearData();
 
-	PlayerData ReadBinary(std::string);
-	void WriteBinary(std::string, PlayerData);
+	PlayerData* ReadBinary(std::string);
+	void InsertScore(PlayerData);
 	
 	rapidxml::xml_document<>& GetDataRoot();
 	rapidxml::xml_node<>* GetDifficultyData(int);
@@ -47,6 +50,9 @@ private:
 	rapidxml::xml_document<> data;
 	std::ifstream readFile;
 	std::ofstream writeFile;
+
+	void WriteBinary(std::string, PlayerData*);
+	PlayerData ranking[10];
 
 	std::string content;
 	GameState state;

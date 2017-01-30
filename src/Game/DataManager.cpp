@@ -59,29 +59,58 @@ rapidxml::xml_node<>* DataManager::GetDifficultyData(int d)
 PlayerData* DataManager::ReadBinary(std::string path) {
 	std::ifstream loadfile(path, std::ios::binary);
 	if (loadfile.good()) {
-		PlayerData playerData;
-		std::getline(loadfile, playerData.name, '\0'); // Get player name (only if null ternimated in binary)
-		loadfile.read(reinterpret_cast<char*>(&playerData.score), sizeof(playerData.score)); // Read int bytes
-		std::cout << "Player: { " << playerData.name << ", " << playerData.score << " }" << std::endl;
+		PlayerData playerData[10];
+		for (int i = 0; i < 10; i++) {
+			int aux = loadfile.tellg();
+			if (i != 0) aux += 1;
+			loadfile.seekg(aux);
+			std::getline(loadfile, playerData[i].name, '\0'); // Get player name (only if null ternimated in binary)
+			loadfile.read(reinterpret_cast<char*>(&playerData[i].score), sizeof(playerData[i].score)); // Read int bytes
+			if (playerData[i].name == "") playerData[i].score = 0;
+			ranking[i] = playerData[i];
+		}
 		loadfile.close();
-		return &playerData;
+		return playerData;
 	}
 	return nullptr;
 }
 
-void DataManager::WriteBinary(std::string path, PlayerData data) {
+void DataManager::WriteBinary(std::string path, PlayerData *data) {
 	std::ofstream savefile(path, std::ios::binary);
 	if (savefile.good()) {
-		savefile.write(data.name.c_str(), data.name.size()); // Write string to binary file
-		savefile.write("\0", sizeof(char)); // Add null end string for easier reading
-		savefile.write(reinterpret_cast<char*>(&data.score), sizeof(data.score)); // Write int to binary file
+		for (int i = 0; i < 10 && data->score != 0; i++) {
+			savefile.write(data->name.c_str(), data->name.size()); // Write string to binary file
+			savefile.write("\0", sizeof(char)); // Add null end string for easier reading
+			savefile.write(reinterpret_cast<char*>(&data->score), sizeof(data->score)); // Write int to binary file
+			savefile.write("\0", sizeof(char));
+			data++;
+		}
 		savefile.close();
 	}
 }
 
+void DataManager::InsertScore(PlayerData data) {
+	//insertar en el array
+	if (ranking[9].score < data.score) ranking[9] = data;
+	//ordenar el array, al ser solo 10 elementos no supone ningun problema
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 9; j++)
+		{
+			if (ranking[j + 1].score > ranking[j].score)
+			{
+				PlayerData temp = ranking[j];
+				ranking[j] = ranking[j + 1];
+				ranking[j + 1] = temp;
+			}
+		}
+	}
+	WriteBinary(RANKING, ranking);
+}
+
 DataManager::DataManager()
 {
-
+	ReadBinary(RANKING);
 }
 
 GameState DataManager::GetState()
