@@ -33,6 +33,9 @@ class Renderer
 {
 private:
 	SDL_Renderer *myRenderer;
+
+	SDL_Texture* auxTex;
+
 	TTF_Font* font;
 	Renderer();
 
