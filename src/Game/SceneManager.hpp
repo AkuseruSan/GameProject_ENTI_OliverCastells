@@ -33,6 +33,8 @@ private:
 
 	std::map<int, Scene*> scenes;
 
+	bool dataAdded;
+
 	MainMenu* mainMenu;
 	Scene* currentScene;
 };

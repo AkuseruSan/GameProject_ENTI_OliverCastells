@@ -9,6 +9,7 @@ SceneManager& SceneManager::GetInstance()
 
 void SceneManager::InitScene(int d)
 {
+	dataAdded = false;
 	currentScene = new Scene(d);
 	ResetPlayerController();
 }
@@ -76,13 +77,16 @@ void SceneManager::Draw()
 		}break;
 		case GameState::GAME_OVER:
 		{
-			GetCurrentScene()->Draw();
-			PlayerData newData;
-			newData.score = playerController->score;
-			R.RenderText("Enter your name on the console", SDL_Color{ 255, 0, 0, 50 }, SDL_Rect{ SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 - 15, 200, 30 });
-			std::cout << "Enter your name to continue" << std::endl;
-			std::cin >> newData.name;
-			DM.InsertScore(newData);
+			if (!dataAdded) {
+				GetCurrentScene()->Draw();
+				PlayerData newData;
+				newData.score = playerController->score;
+				R.RenderText("Enter your name on the console", SDL_Color{ 255, 0, 0, 50 }, SDL_Rect{ SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 - 15, 200, 30 });
+				std::cout << "Enter your name to continue" << std::endl;
+				std::cin >> newData.name;
+				DM.InsertScore(newData);
+				dataAdded = true;
+			}
 			GetCurrentScene()->Draw();
 			R.RenderText("TOP 10", SDL_Color{ 50,255,50,45 }, SDL_Rect{ SCREEN_WIDTH / 2 - 40, 30, 80, 30 });
 			for (int i = 0; i < 10; i++) {
