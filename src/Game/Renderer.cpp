@@ -13,7 +13,9 @@ void Renderer::Render(SDL_Texture* tex, SDL_Rect* sourceRect, SDL_Rect& destRect
 
 void Renderer::RenderText(char* msg, SDL_Color col, SDL_Rect& destRect)
 {
-	SDL_RenderCopy(myRenderer, GetTextAsTexture(msg, col), nullptr, &destRect);
+	SDL_Texture* tex = GetTextAsTexture(msg, col);
+	SDL_RenderCopy(myRenderer, tex, nullptr, &destRect);
+	SDL_DestroyTexture(tex);
 }
 
 void Renderer::RenderRect(SDL_Rect* r, SDL_Color col)
@@ -52,9 +54,12 @@ void Renderer::LoadTexture(std::string name, const char* path)
 SDL_Texture* Renderer::GetTextAsTexture(char* text, SDL_Color col)
 {
 	SDL_Surface* sur{ TTF_RenderText_Blended(font, text, col) };
-	SDL_Texture* tex{ SDL_CreateTextureFromSurface(RR, sur) };
+	//SDL_Texture* tex{ SDL_CreateTextureFromSurface(RR, sur) };
+	auxTex = { SDL_CreateTextureFromSurface(RR, sur) };
+
+	SDL_FreeSurface(sur);
 	
-	return tex;
+	return auxTex;
 }
 
 SDL_Texture* Renderer::GetTexture(std::string key)
@@ -76,5 +81,9 @@ Renderer::~Renderer()
 		SDL_DestroyTexture(it->second);
 		//delete(it->second);
 	}
+
+	TTF_CloseFont(font);
+	SDL_DestroyTexture(auxTex);
+	SDL_DestroyRenderer(myRenderer);
 
 }
