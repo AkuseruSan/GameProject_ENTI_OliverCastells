@@ -56,7 +56,7 @@ rapidxml::xml_node<>* DataManager::GetDifficultyData(int d)
 	else throw "THAT DIFFICULTY LEVEL DOESN'T EXIST";
 }
 
-PlayerData* DataManager::ReadBinary(std::string path) {
+void DataManager::ReadBinary(std::string path) {
 	std::ifstream loadfile(path, std::ios::binary);
 	if (loadfile.good()) {
 		PlayerData playerData[10];
@@ -70,9 +70,7 @@ PlayerData* DataManager::ReadBinary(std::string path) {
 			ranking[i] = playerData[i];
 		}
 		loadfile.close();
-		return playerData;
 	}
-	return nullptr;
 }
 
 void DataManager::WriteBinary(std::string path, PlayerData *data) {

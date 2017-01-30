@@ -31,8 +31,8 @@ public:
 
 	void ClearData();
 
-	PlayerData* ReadBinary(std::string);
 	void InsertScore(PlayerData);
+	PlayerData* GetRanking() { return ranking; }
 	
 	rapidxml::xml_document<>& GetDataRoot();
 	rapidxml::xml_node<>* GetDifficultyData(int);
@@ -50,6 +50,7 @@ private:
 	std::ifstream readFile;
 	std::ofstream writeFile;
 
+	void ReadBinary(std::string);
 	void WriteBinary(std::string, PlayerData*);
 	PlayerData ranking[10];
 

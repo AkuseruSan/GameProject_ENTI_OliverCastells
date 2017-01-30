@@ -77,9 +77,21 @@ void SceneManager::Draw()
 		case GameState::GAME_OVER:
 		{
 			GetCurrentScene()->Draw();
-			R.RenderText("[CLICK TO GO TO MAIN MENU]", SDL_Color{ 255,255,60,45 }, SDL_Rect{ SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4, 200, 20 });
-			R.RenderText((char*)std::string("Score: "+ std::to_string(playerController->score)).c_str(), SDL_Color{ 255,255,60,45 }, SDL_Rect{ SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2, 100, 20 });
-			R.RenderText((char*)std::string("Level: " + std::to_string(playerController->level)).c_str(), SDL_Color{ 255,255,60,45 }, SDL_Rect{ SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 + 50, 100, 20 });
+			PlayerData newData;
+			newData.score = playerController->score;
+			R.RenderText("Enter your name on the console", SDL_Color{ 255, 0, 0, 50 }, SDL_Rect{ SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 - 15, 200, 30 });
+			std::cout << "Enter your name to continue" << std::endl;
+			std::cin >> newData.name;
+			DM.InsertScore(newData);
+			GetCurrentScene()->Draw();
+			R.RenderText("TOP 10", SDL_Color{ 50,255,50,45 }, SDL_Rect{ SCREEN_WIDTH / 2 - 40, 30, 80, 30 });
+			for (int i = 0; i < 10; i++) {
+				R.RenderText(const_cast<char*>(DM.GetRanking()[i].name.c_str()), SDL_Color{ 50,255,50,45 }, SDL_Rect{ SCREEN_WIDTH / 2 - 200, 100 + (40 * i), 15 *(int)DM.GetRanking()[i].name.size(), 20 });
+				R.RenderText(const_cast<char*>(std::to_string(DM.GetRanking()[i].score).c_str()), SDL_Color{ 50,255,50,45 }, SDL_Rect{ SCREEN_WIDTH / 2 + 50, 100 + (40 * i), 15 * (int)std::to_string(DM.GetRanking()[i].score).size() , 20 });
+			}
+			R.RenderText("[CLICK TO GO TO MAIN MENU]", SDL_Color{ 255,255,60,45 }, SDL_Rect{ SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 3 + 50, 200, 20 });
+			R.RenderText((char*)std::string("Score: "+ std::to_string(playerController->score)).c_str(), SDL_Color{ 255,255,60,45 }, SDL_Rect{ SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4, 100, 20 });
+			R.RenderText((char*)std::string("Level: " + std::to_string(playerController->level)).c_str(), SDL_Color{ 255,255,60,45 }, SDL_Rect{ SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 4 + 50, 100, 20 });
 
 		}break;
 	}
