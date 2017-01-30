@@ -28,6 +28,8 @@ class DataManager
 public:
 	static DataManager& GetInstance();
 
+	~DataManager();
+
 	void LoadFileXML(char* path);
 
 	void SaveFileXML(char* path);

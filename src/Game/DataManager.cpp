@@ -122,6 +122,11 @@ DataManager::DataManager()
 
 }
 
+DataManager::~DataManager()
+{
+	//delete(ranking);
+}
+
 GameState DataManager::GetState()
 {
 	return state;

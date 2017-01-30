@@ -34,7 +34,7 @@ void PlayerController::InitSnake()
 	foodInc = 0;
 	lives = INITIAL_LIVES;
 	rotation = 0;
-	speed = strtod(DM.GetDifficultyData(ownerScene->GetDifficulty())->first_node("speed")->value(), NULL);
+	speed = strtod(DM.GetDifficultyData(ownerScene->GetDifficulty())->first_attribute("speed")->value(), NULL);
 	collider = GameObjectType::NONE;
 	apple = nullptr;
 	int center = ownerScene->GetGrid()->GetSize() / 2;

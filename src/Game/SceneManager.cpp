@@ -107,15 +107,14 @@ int SceneManager::GetDifficulty() { return GetCurrentScene()->GetDifficulty(); }
 SceneManager::SceneManager() 
 {
 	mainMenu = new MainMenu();
-	InitScene(0);
-	ResetPlayerController();
+	//InitScene(0);
+	//ResetPlayerController();
 }
 
 SceneManager::~SceneManager()
 {
 	delete(mainMenu);
 	delete(currentScene);
-	//delete(playerController);
 }
 
 void SceneManager::ResetPlayerController()
