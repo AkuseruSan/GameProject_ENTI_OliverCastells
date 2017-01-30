@@ -121,3 +121,8 @@ void DataManager::SetState(GameState s)
 {
 	state = s;
 }
+
+void InputText(char* container)
+{
+
+}

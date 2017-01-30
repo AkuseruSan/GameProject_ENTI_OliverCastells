@@ -40,6 +40,7 @@ public:
 	GameState GetState();
 	void SetState(GameState);
 
+	void InputText(char* container);
 private:
 	DataManager();
 
