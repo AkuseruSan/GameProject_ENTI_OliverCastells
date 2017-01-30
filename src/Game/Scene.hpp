@@ -35,4 +35,5 @@ private:
 	int difficulty;
 
 	float lvlCounter;
+	float lvlTime;
 };
