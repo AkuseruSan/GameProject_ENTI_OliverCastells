@@ -3,7 +3,7 @@
 #include <SDL/SDL.h>
 #include <queue>
 #include "System.hpp"
-#include "Vector.hpp"
+#include "AuxLib.hpp"
 
 #define IM InputManager::Instance()
 
@@ -22,13 +22,18 @@ public:
 		return inputManager;
 	}
 
-	void Update(bool& isRun);
+	void Update();
+
+	inline bool HasQuit() { return gameExit; };
 
 	bool MouseClicked();
 	Vector GetMousePosition();
 	inline int GetDirction(void)  const { return direction; }
 	inline void ResetDirection(void) { direction = NULL; }
 private:
+
+	bool gameExit;
+
 	Vector mousePos;
 	bool click;
 	int direction = NULL;

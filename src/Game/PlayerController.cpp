@@ -18,17 +18,24 @@ void PlayerController::Update()
 
 	Move();
 	CheckCollision();
+
+	if (ownerScene->lvlCounter <= 0)
+	{
+		ownerScene->lvlCounter = ownerScene->lvlTime;
+		Die();
+	}
 }
 
 void PlayerController::InitSnake()
 {
+	speedTimer = 0;
 	level = 0;
 	score = 0;
 	eatenApples = 0;
 	foodInc = 0;
 	lives = INITIAL_LIVES;
 	rotation = 0;
-	speed = INITIAL_SPEED;
+	speed = strtod(DM.GetDifficultyData(ownerScene->GetDifficulty())->first_attribute("speed")->value(), NULL) * TM.GetDeltaTime();
 	collider = GameObjectType::NONE;
 	apple = nullptr;
 	int center = ownerScene->GetGrid()->GetSize() / 2;
@@ -40,6 +47,7 @@ void PlayerController::InitSnake()
 void PlayerController::Die()
 {
 	IM.ResetDirection();
+	ownerScene->ResetTimer();
 	//Pierde una vida y reinicia el nivel.
 	if (lives > 1) {
 		lives--;
@@ -57,16 +65,17 @@ void PlayerController::Die()
 	if(collider == BLOCK) controlledObject->SetType(BLOCK);
 	collider = NONE;
 	eatenApples = 0;
-	speed = INITIAL_SPEED;
+	speed = strtod(DM.GetDifficultyData(ownerScene->GetDifficulty())->first_attribute("speed")->value(), NULL) * TM.GetDeltaTime();
 }
 
 void PlayerController::LevelUp() {
 	foodInc += ICREMENT_FOOD * std::stoi(DM.GetDifficultyData(ownerScene->GetDifficulty())->first_attribute("food_increment")->value(), nullptr, 10);
 	eatenApples = 0;
 	level++;
-	speed = INITIAL_SPEED;
+	speed = strtod(DM.GetDifficultyData(ownerScene->GetDifficulty())->first_attribute("speed")->value(), NULL) * TM.GetDeltaTime();
 	ownerScene->GetGrid()->DeleteObstacles();
 	ownerScene->GetGrid()->GenerateObstacles();
+	ownerScene->ResetTimer();
 }
 
 void PlayerController::CheckCollision() {
@@ -76,7 +85,7 @@ void PlayerController::CheckCollision() {
 	case APPLE: {
 		eatenApples++;
 		score += (eatenApples * SCORE_UP);
-		//speed += score / 1000;
+		speed -= (score / 10000) * TM.GetDeltaTime();
 		body.push_back(body.back());
 		if (eatenApples >= INITIAL_FOOD * (std::stoi(DM.GetDifficultyData(ownerScene->GetDifficulty())->first_attribute("food")->value()), nullptr, 1) + foodInc)
 			LevelUp();
@@ -90,28 +99,31 @@ void PlayerController::Move()
 {
 	Vector pos = body.front();
 	controlledObject->SetType(GameObjectType::SNAKE);
-	
-	switch (IM.GetDirction())
-	{
-	case DIR_UP:	if (pos.y != 0) {pos.y -= speed; rotation = 0;}	break;
-	case DIR_DOWN:	if (pos.y != ownerScene->GetGrid()->GetSize() - 1) {pos.y += speed; rotation = 180;}break;
-	case DIR_LEFT:	if (pos.x != 0) {pos.x -= speed; rotation = 270;}break;
-	case DIR_RIGHT:	if (pos.x < ownerScene->GetGrid()->GetSize() - 1) {pos.x += speed;	rotation = 90;}	break;
+	speedTimer += TM.GetDeltaTime();
+	if (speedTimer >= speed) {
+		switch (IM.GetDirction())
+		{
+		case DIR_UP:	if (pos.y != 0) { pos.y -= 1; rotation = 0; }	break;
+		case DIR_DOWN:	if (pos.y != ownerScene->GetGrid()->GetSize() - 1) { pos.y += 1; rotation = 180; }break;
+		case DIR_LEFT:	if (pos.x != 0) { pos.x -= 1; rotation = 270; }break;
+		case DIR_RIGHT:	if (pos.x < ownerScene->GetGrid()->GetSize() - 1) { pos.x += 1;	rotation = 90; }	break;
+		}
+
+		if (IM.GetDirction() != NULL)
+			collider = ownerScene->GetGrid()->GetObjectFromGrid(pos.x, pos.y)->GetType();
+
+		body.push_front(pos);
+		controlledObject = ownerScene->GetGrid()->GetObjectFromGrid(body.back().x, body.back().y);
+		controlledObject->SetDefaultType();
+		body.pop_back();
+
+		controlledObject = ownerScene->GetGrid()->GetObjectFromGrid(body.back().x, body.back().y);
+		controlledObject->SetType(GameObjectType::SNAKEEND);
+
+		controlledObject = ownerScene->GetGrid()->GetObjectFromGrid(body.front().x, body.front().y);
+		controlledObject->SetType(GameObjectType::SNAKESTART);
+		controlledObject->SetRotation(rotation);
+
+		speedTimer = 0;
 	}
-	
-	if(IM.GetDirction() != NULL)
-		collider = ownerScene->GetGrid()->GetObjectFromGrid(pos.x, pos.y)->GetType();
-
-	body.push_front(pos);
-	controlledObject = ownerScene->GetGrid()->GetObjectFromGrid(body.back().x, body.back().y);
-	controlledObject->SetDefaultType();
-	body.pop_back();
-
-	controlledObject = ownerScene->GetGrid()->GetObjectFromGrid(body.back().x, body.back().y);
-	controlledObject->SetType(GameObjectType::SNAKEEND);
-
-	controlledObject = ownerScene->GetGrid()->GetObjectFromGrid(body.front().x, body.front().y);
-	controlledObject->SetType(GameObjectType::SNAKESTART);
-	controlledObject->SetRotation(rotation);
-
 }

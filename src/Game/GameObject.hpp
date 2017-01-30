@@ -1,8 +1,7 @@
 #pragma once
 
-#include "Vector.hpp"
+#include "AuxLib.hpp"
 #include "Renderer.hpp"
-
 
 
 enum GameObjectType {NONE, BLOCK, APPLE, SNAKE, SNAKEEND, SNAKESTART};
@@ -14,6 +13,7 @@ private:
 	int width, height;
 	int rotation;
 	Vector atlasSection;
+
 
 	SDL_Rect* bounds;
 	SDL_Texture* texture;

@@ -54,5 +54,5 @@ void GameObject::SetBounds()
 
 GameObject::~GameObject()
 {
-
+	
 }

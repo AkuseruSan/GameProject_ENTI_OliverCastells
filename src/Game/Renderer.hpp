@@ -2,8 +2,9 @@
 #include <SDL/SDL_image.h>
 #include <SDL/SDL_ttf.h>
 #include <map>
-#include "Vector.hpp"
+#include "AuxLib.hpp"
 #include "Window.hpp"
+#include "TimeManager.hpp"
 
 #define R Renderer::Instance()//Game Engine Renderer
 #define RR Renderer::Instance().GetRenderer()//SDL Renderer
@@ -32,6 +33,9 @@ class Renderer
 {
 private:
 	SDL_Renderer *myRenderer;
+
+	SDL_Texture* auxTex;
+
 	TTF_Font* font;
 	Renderer();
 
@@ -49,6 +53,8 @@ public:
 	SDL_Renderer* GetRenderer();
 	void Render(SDL_Texture* tex, SDL_Rect* sourceRect, SDL_Rect& destRect);
 	void RenderText(char* msg, SDL_Color col, SDL_Rect& destRect);
+
+	void RenderRect(SDL_Rect* r, SDL_Color col);
 
 	void Render(SDL_Texture* tex, SDL_Rect* sourceRect, SDL_Rect& destRect, int degrees);
 

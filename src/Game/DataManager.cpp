@@ -56,9 +56,75 @@ rapidxml::xml_node<>* DataManager::GetDifficultyData(int d)
 	else throw "THAT DIFFICULTY LEVEL DOESN'T EXIST";
 }
 
+void DataManager::ReadBinary(std::string path) {
+	std::ifstream loadfile(path, std::ios::binary);
+	if (loadfile.good()) {
+		PlayerData playerData[10];
+		for (int i = 0; i < 10; i++) {
+			int aux = loadfile.tellg();
+			if (i != 0) aux += 1;
+			loadfile.seekg(aux);
+			std::getline(loadfile, playerData[i].name, '\0'); // Get player name (only if null ternimated in binary)
+			loadfile.read(reinterpret_cast<char*>(&playerData[i].score), sizeof(playerData[i].score)); // Read int bytes
+			if (playerData[i].name == "") playerData[i].score = 0;
+			ranking[i] = playerData[i];
+		}
+		loadfile.close();
+	}
+}
+
+void DataManager::WriteBinary(std::string path, PlayerData *data) {
+	std::ofstream savefile(path, std::ios::binary);
+	if (savefile.good()) {
+		for (int i = 0; i < 10 && data->score != 0; i++) {
+			savefile.write(data->name.c_str(), data->name.size()); // Write string to binary file
+			savefile.write("\0", sizeof(char)); // Add null end string for easier reading
+			savefile.write(reinterpret_cast<char*>(&data->score), sizeof(data->score)); // Write int to binary file
+			savefile.write("\0", sizeof(char));
+			data++;
+		}
+		savefile.close();
+	}
+}
+
+void DataManager::InsertScore(PlayerData data) {
+	//insertar en el array
+	if (ranking[9].score < data.score) ranking[9] = data;
+	//ordenar el array, al ser solo 10 elementos no supone ningun problema
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 9; j++)
+		{
+			if (ranking[j + 1].score > ranking[j].score)
+			{
+				PlayerData temp = ranking[j];
+				ranking[j] = ranking[j + 1];
+				ranking[j + 1] = temp;
+			}
+		}
+	}
+	WriteBinary(ranking_data, ranking);
+}
+
+void DataManager::SetRankingData(int d) {
+	switch (d)
+	{
+	case 0:		ranking_data = EASY_RANKING;	break;
+	case 1:		ranking_data = MID_RANKING;		break;
+	case 2:		ranking_data = HARD_RANKING;	break;
+	default:	throw "THAT DIFFICULTY LEVEL DOESN'T EXIST";	break;
+	}
+	ReadBinary(ranking_data);
+}
+
 DataManager::DataManager()
 {
 
+}
+
+DataManager::~DataManager()
+{
+	//delete(ranking);
 }
 
 GameState DataManager::GetState()
@@ -69,4 +135,9 @@ GameState DataManager::GetState()
 void DataManager::SetState(GameState s)
 {
 	state = s;
+}
+
+void InputText(char* container)
+{
+
 }

@@ -23,7 +23,12 @@ Grid::Grid(int diff)
 
 Grid::~Grid()
 {
-	// delete(gameObjectsGrid);
+	//for (int i = 0; i < size; i++)
+	//{
+	//	gameObjectsGrid[i]->~GameObject();
+	//	//delete(gameObjectsGrid[i]);
+	//}
+	//delete(gameObjectsGrid);
 }
 
 int Grid::GetSize()

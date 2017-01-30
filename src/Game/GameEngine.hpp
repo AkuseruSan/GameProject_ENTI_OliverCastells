@@ -5,13 +5,14 @@
 #include <SDL\SDL_image.h>	// Used for loading and drawing sprites
 #include <SDL\SDL_mixer.h>	// Used for loading and playing audio files
 
-#include "Vector.hpp"
+#include "AuxLib.hpp"
 #include "Window.hpp"
 #include "Renderer.hpp"
 #include "System.hpp"
 #include "SceneManager.hpp"
 #include "DataManager.hpp"
 #include "InputManager.hpp"
+#include "TimeManager.hpp"
 
 #include <iostream>
 
